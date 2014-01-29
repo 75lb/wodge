@@ -1,0 +1,7 @@
+{
+  "name": "wodge",
+  "version": "0.0.0",
+  "description": "a wodge of functional cash",
+  "main": "wodge.js",
+  "author": "Lloyd Brookes"
+}
