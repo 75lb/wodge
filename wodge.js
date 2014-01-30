@@ -25,3 +25,23 @@ exports.pluck = function(object, fn){
     }
     return output;
 }
+
+exports.isNumber = function(n){
+    return !isNaN(parseFloat(n)) && isFinite(n);
+};
+
+exports.arrayify = function(arr){
+    if (arr === null || arr === undefined){
+        return [];
+    } else {
+        return Array.isArray(arr) ? arr : [ arr ];
+    }
+};
+
+exports.every = function(obj, callback){
+    var every = true;
+    for (var prop in obj){
+        every = every && callback(obj[prop], prop);
+    }
+    return every;
+};
