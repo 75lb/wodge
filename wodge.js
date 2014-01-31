@@ -29,6 +29,9 @@ exports.pluck = function(object, fn){
 exports.isNumber = function(n){
     return !isNaN(parseFloat(n)) && isFinite(n);
 };
+exports.isPlainObject = function(o){
+    return typeof o === "object" && !Array.isArray(o);
+};
 
 exports.arrayify = function(arr){
     if (arr === null || arr === undefined){
@@ -44,4 +47,10 @@ exports.every = function(obj, callback){
         every = every && callback(obj[prop], prop);
     }
     return every;
+};
+
+exports.each = function(obj, callback){
+    for (var prop in obj){
+        callback(obj[prop], prop);
+    }
 };
