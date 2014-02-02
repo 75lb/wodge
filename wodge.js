@@ -80,3 +80,15 @@ exports.each = function(obj, callback){
         callback(obj[prop], prop);
     }
 };
+
+if (process.platform === "win32") {
+    exports.symbol = {
+        tick: "\u221A",
+        cross: "\u00D7"
+    };
+} else {
+    exports.symbol = {
+        tick: "✔︎",
+        cross: "✖"
+    };
+}
