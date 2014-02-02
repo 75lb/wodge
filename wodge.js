@@ -1,4 +1,6 @@
 "use strict";
+var l = console.log;
+
 exports.extend = function(obj, srcObj){
     for (var prop in srcObj){
         obj[prop] = srcObj[prop];
@@ -10,6 +12,19 @@ exports.escapeRegExp = function(string){
     return string
         ? string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1")
         : "";
+};
+
+var ansi = {
+    black: 30,
+    red: 31,
+    green: 32,
+    yellow: 33,
+    blue: 34,
+    magenta: 35,
+    cyan: 36,
+    white: 37,
+    bold: 1,
+    underline: 4
 };
 
 exports.black = function(txt){
@@ -38,6 +53,12 @@ exports.white = function(txt){
 };
 exports.bold = function(txt){
     return "\x1b[1m" + txt + "\x1b[0m";
+};
+exports.ansi = function(){
+    var args = exports.array(arguments),
+        txt = args.shift(),
+        codes = args.map(function(arg){ return ansi[arg]; });
+    return "\x1b[" + codes.join(";") + "m" + txt + "\x1b[0m";
 };
 
 exports.pluck = function(object, fn){
