@@ -1,5 +1,6 @@
 "use strict";
-var l = console.log;
+var util = require("util"),
+    l = console.log;
 
 exports.extend = function(obj, srcObj){
     for (var prop in srcObj){
@@ -27,38 +28,51 @@ var ansi = {
     underline: 4
 };
 
+var ansiFormat = "\x1b[%sm%s\x1b[0m";
+
 exports.black = function(txt){
-    return "\x1b[30m" + txt + "\x1b[0m";
+    return util.format(ansiFormat, ansi.black, txt);
 };
 exports.red = function(txt){
-    return "\x1b[31m" + txt + "\x1b[0m";
+    return util.format(ansiFormat, ansi.red, txt);
 };
 exports.green = function(txt){
-    return "\x1b[32m" + txt + "\x1b[0m";
+    return util.format(ansiFormat, ansi.green, txt);
 };
 exports.yellow = function(txt){
-    return "\x1b[33m" + txt + "\x1b[0m";
+    return util.format(ansiFormat, ansi.yellow, txt);
 };
 exports.blue = function(txt){
-    return "\x1b[34m" + txt + "\x1b[0m";
+    return util.format(ansiFormat, ansi.blue, txt);
 };
 exports.magenta = function(txt){
-    return "\x1b[35m" + txt + "\x1b[0m";
+    return util.format(ansiFormat, ansi.magenta, txt);
 };
 exports.cyan = function(txt){
-    return "\x1b[36m" + txt + "\x1b[0m";
+    return util.format(ansiFormat, ansi.cyan, txt);
 };
 exports.white = function(txt){
-    return "\x1b[37m" + txt + "\x1b[0m";
+    return util.format(ansiFormat, ansi.white, txt);
 };
 exports.bold = function(txt){
-    return "\x1b[1m" + txt + "\x1b[0m";
+    return util.format(ansiFormat, ansi.bold, txt);
 };
+exports.underline = function(txt){
+    return util.format(ansiFormat, ansi.underline, txt);
+};
+
+/**
+Add multiple ansi formats
+@method ansi
+@example
+    ansi("hello", "bold", "underline");
+    ansi("success", "green", "bold");
+*/
 exports.ansi = function(){
     var args = exports.array(arguments),
         txt = args.shift(),
         codes = args.map(function(arg){ return ansi[arg]; });
-    return "\x1b[" + codes.join(";") + "m" + txt + "\x1b[0m";
+    return util.format(ansiFormat, codes.join(";"), txt);
 };
 
 exports.pluck = function(object, fn){
