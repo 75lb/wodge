@@ -1,6 +1,6 @@
 {
   "name": "wodge",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "a wodge of functional dough",
   "main": "wodge.js",
   "author": "Lloyd Brookes",
