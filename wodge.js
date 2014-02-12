@@ -15,66 +15,6 @@ exports.escapeRegExp = function(string){
         : "";
 };
 
-var ansi = {
-    black: 30,
-    red: 31,
-    green: 32,
-    yellow: 33,
-    blue: 34,
-    magenta: 35,
-    cyan: 36,
-    white: 37,
-    bold: 1,
-    underline: 4
-};
-
-var ansiFormat = "\x1b[%sm%s\x1b[0m";
-
-exports.black = function(txt){
-    return util.format(ansiFormat, ansi.black, txt);
-};
-exports.red = function(txt){
-    return util.format(ansiFormat, ansi.red, txt);
-};
-exports.green = function(txt){
-    return util.format(ansiFormat, ansi.green, txt);
-};
-exports.yellow = function(txt){
-    return util.format(ansiFormat, ansi.yellow, txt);
-};
-exports.blue = function(txt){
-    return util.format(ansiFormat, ansi.blue, txt);
-};
-exports.magenta = function(txt){
-    return util.format(ansiFormat, ansi.magenta, txt);
-};
-exports.cyan = function(txt){
-    return util.format(ansiFormat, ansi.cyan, txt);
-};
-exports.white = function(txt){
-    return util.format(ansiFormat, ansi.white, txt);
-};
-exports.bold = function(txt){
-    return util.format(ansiFormat, ansi.bold, txt);
-};
-exports.underline = function(txt){
-    return util.format(ansiFormat, ansi.underline, txt);
-};
-
-/**
-Add multiple ansi formats
-@method ansi
-@example
-    ansi("hello", "bold", "underline");
-    ansi("success", "green", "bold");
-*/
-exports.ansi = function(){
-    var args = exports.array(arguments),
-        txt = args.shift(),
-        codes = args.map(function(arg){ return ansi[arg]; });
-    return util.format(ansiFormat, codes.join(";"), txt);
-};
-
 exports.pluck = function(object, fn){
     var output = [];
     for (var prop in object){
@@ -127,3 +67,29 @@ if (process.platform === "win32") {
         cross: "✖"
     };
 }
+
+exports.bytesToSize = function(bytes, precision){
+    var kilobyte = 1024;
+    var megabyte = kilobyte * 1024;
+    var gigabyte = megabyte * 1024;
+    var terabyte = gigabyte * 1024;
+
+    if ((bytes >= 0) && (bytes < kilobyte)) {
+        return bytes + ' B';
+
+    } else if ((bytes >= kilobyte) && (bytes < megabyte)) {
+        return (bytes / kilobyte).toFixed(precision) + ' KB';
+
+    } else if ((bytes >= megabyte) && (bytes < gigabyte)) {
+        return (bytes / megabyte).toFixed(precision) + ' MB';
+
+    } else if ((bytes >= gigabyte) && (bytes < terabyte)) {
+        return (bytes / gigabyte).toFixed(precision) + ' GB';
+
+    } else if (bytes >= terabyte) {
+        return (bytes / terabyte).toFixed(precision) + ' TB';
+
+    } else {
+        return bytes + ' B';
+    }
+};
