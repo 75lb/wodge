@@ -93,3 +93,7 @@ exports.bytesToSize = function(bytes, precision){
         return bytes + ' B';
     }
 };
+
+exports.getHomeDir = function () {
+  return process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+};
