@@ -33,6 +33,8 @@ exports.isPlainObject = function(o){
 exports.arrayify = function(arr){
     if (arr === null || arr === undefined){
         return [];
+    } else if (!Array.isArray(arr) && typeof arr === "object" && arr.length >= 0 && arr.length === Math.floor(arr.length)){
+        return Array.prototype.slice.call(arr);
     } else {
         return Array.isArray(arr) ? arr : [ arr ];
     }
