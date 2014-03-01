@@ -99,3 +99,18 @@ exports.bytesToSize = function(bytes, precision){
 exports.getHomeDir = function () {
   return process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
 };
+
+exports.fill = function(fillWith, len){
+    var buffer = new Buffer(len);
+    buffer.fill(fillWith);
+    return buffer.toString();
+};
+
+exports.padRight = function(input, width, padWith){
+    padWith = padWith || " ";
+    if (input.length < width){
+        return input + exports.fill(padWith, width - input.length);
+    } else {
+        return input;
+    }
+};
