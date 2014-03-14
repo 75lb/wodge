@@ -17,6 +17,15 @@ exports.clone = function(obj){
     return output;
 };
 
+exports.omit = function(obj, toOmit){
+    toOmit = exports.arrayify(toOmit);
+    var output = exports.clone(obj);
+    for (var prop in toOmit){
+        delete output[prop];
+    }
+    return output;
+};
+
 exports.escapeRegExp = function(string){
     return string
         ? string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1")
