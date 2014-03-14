@@ -114,3 +114,14 @@ exports.padRight = function(input, width, padWith){
         return input;
     }
 };
+
+exports.exists = function(arr, value){
+    return arr.indexOf(value) > -1;
+}
+
+exports.without = function(arr, toRemove){
+    toRemove = exports.arrayify(toRemove);
+    return arr.filter(function(item){
+        return !exports.exists(toRemove, item);
+    });
+};
