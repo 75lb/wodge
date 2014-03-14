@@ -9,6 +9,14 @@ exports.extend = function(obj, srcObj){
     return obj;
 };
 
+exports.clone = function(obj){
+    var output = {};
+    for (var prop in obj){
+        output[prop] = obj[prop];
+    }
+    return output;
+};
+
 exports.escapeRegExp = function(string){
     return string
         ? string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1")
