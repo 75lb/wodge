@@ -25,6 +25,7 @@ exports.without = without;
 function extend(){
     var args = arrayify(arguments);
     return args.reduce(function(prev, curr){
+        if (typeof curr !== "object") return prev;
         for (var prop in curr){
             prev[prop] = curr[prop];
         }
