@@ -8,9 +8,6 @@ test(".extend", function(t){
     output = w.extend({}, { one: 1, three: 3 }, { one: "one", two: 2 }, { four: 4 });
     t.deepEqual(output, { one: "one", two: 2, three: 3, four: 4 });
 
-    output = w.extend({}, { one: 1, three: 3 }, { one: "one", two: 2 }, { four: 4 });
-    t.deepEqual(output, { one: "one", two: 2, three: 3, four: 4 });
-
     t.end();
 });
 
