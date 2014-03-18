@@ -4,5 +4,8 @@
   "description": "a wodge of functional dough",
   "main": "wodge.js",
   "author": "Lloyd Brookes",
-  "repository": "https://github.com/75lb/wodge"
+  "repository": "https://github.com/75lb/wodge",
+  "devDependencies": {
+    "tape": "^2.10.2"
+  }
 }
