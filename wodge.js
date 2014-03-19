@@ -42,14 +42,20 @@ function clone(obj){
 };
 
 function omit(obj, toOmit){
-    toOmit = exports.arrayify(toOmit);
-    var output = exports.clone(obj);
+    toOmit = arrayify(toOmit);
+    var output = clone(obj);
     for (var prop in toOmit){
         delete output[prop];
     }
     return output;
 };
 
+/**
+escape special regular expression characters
+@method
+@example 
+    w.escapeRegExp("(.*)"); // => '\\(\\.\\*\\)'
+*/
 function escapeRegExp(string){
     return string
         ? string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1")
@@ -134,7 +140,7 @@ function fill(fillWith, len){
 function padRight(input, width, padWith){
     padWith = padWith || " ";
     if (input.length < width){
-        return input + exports.fill(padWith, width - input.length);
+        return input + fill(padWith, width - input.length);
     } else {
         return input;
     }
@@ -145,8 +151,8 @@ function exists(arr, value){
 }
 
 function without(arr, toRemove){
-    toRemove = exports.arrayify(toRemove);
+    toRemove = arrayify(toRemove);
     return arr.filter(function(item){
-        return !exports.exists(toRemove, item);
+        return !exists(toRemove, item);
     });
 };
