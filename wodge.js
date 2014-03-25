@@ -62,6 +62,17 @@ function escapeRegExp(string){
         : "";
 };
 
+/**
+return an array containing the property names of `object` which pass the test function
+@method
+@example
+var obj = {
+    clive: 1,
+    hater: 3
+};
+var list = w.pluck(obj, function(val){ return val === 1});
+// list is [ "clive" ]
+*/
 function pluck(object, fn){
     var output = [];
     for (var prop in object){
