@@ -1,6 +1,6 @@
 {
   "name": "wodge",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "a wodge of functional dough",
   "main": "wodge.js",
   "author": "Lloyd Brookes",
@@ -9,6 +9,6 @@
     "tape": "~2.10.2"
   },
   "scripts": {
-      "test": "node test/api.js"
+    "test": "node test/api.js"
   }
 }
