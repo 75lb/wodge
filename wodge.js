@@ -1,4 +1,5 @@
 "use strict";
+/** @module wodge */
 var util = require("util");
 
 exports.extend = extend;
@@ -21,6 +22,7 @@ exports.fill = fill;
 exports.padRight = padRight;
 exports.exists = exists;
 exports.without = without;
+exports.first = first;
 
 function extend(){
     var args = arrayify(arguments);
@@ -31,7 +33,7 @@ function extend(){
         }
         return prev;
     }, {});
-};
+}
 
 function clone(obj){
     var output = {};
@@ -39,7 +41,7 @@ function clone(obj){
         output[prop] = obj[prop];
     }
     return output;
-};
+}
 
 function omit(obj, toOmit){
     toOmit = arrayify(toOmit);
@@ -48,19 +50,19 @@ function omit(obj, toOmit){
         delete output[prop];
     }
     return output;
-};
+}
 
 /**
 escape special regular expression characters
 @method
-@example 
+@example
     w.escapeRegExp("(.*)"); // => '\\(\\.\\*\\)'
 */
 function escapeRegExp(string){
     return string
         ? string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1")
         : "";
-};
+}
 
 /**
 return an array containing the property names of `object` which pass the test function
@@ -79,14 +81,14 @@ function pluck(object, fn){
         if (fn(object[prop])) output.push(prop);
     }
     return output;
-};
+}
 
 function isNumber(n){
     return !isNaN(parseFloat(n)) && isFinite(n);
-};
+}
 function isPlainObject(o){
     return typeof o === "object" && !Array.isArray(o);
-};
+}
 
 function arrayify(arr){
     if (arr === null || arr === undefined){
@@ -96,21 +98,21 @@ function arrayify(arr){
     } else {
         return Array.isArray(arr) ? arr : [ arr ];
     }
-};
+}
 
 function every(obj, callback){
-    var every = true;
+    var ev = true;
     for (var prop in obj){
-        every = every && callback(obj[prop], prop);
+        ev = ev && callback(obj[prop], prop);
     }
-    return every;
-};
+    return ev;
+}
 
 function each(obj, callback){
     for (var prop in obj){
         callback(obj[prop], prop);
     }
-};
+}
 
 function bytesToSize(bytes, precision){
     var kilobyte = 1024;
@@ -119,35 +121,32 @@ function bytesToSize(bytes, precision){
     var terabyte = gigabyte * 1024;
 
     if ((bytes >= 0) && (bytes < kilobyte)) {
-        return bytes + ' B';
+        return bytes + " B";
 
     } else if ((bytes >= kilobyte) && (bytes < megabyte)) {
-        return (bytes / kilobyte).toFixed(precision) + ' KB';
+        return (bytes / kilobyte).toFixed(precision) + " KB";
 
     } else if ((bytes >= megabyte) && (bytes < gigabyte)) {
-        return (bytes / megabyte).toFixed(precision) + ' MB';
+        return (bytes / megabyte).toFixed(precision) + " MB";
 
     } else if ((bytes >= gigabyte) && (bytes < terabyte)) {
-        return (bytes / gigabyte).toFixed(precision) + ' GB';
+        return (bytes / gigabyte).toFixed(precision) + " GB";
 
     } else if (bytes >= terabyte) {
-        return (bytes / terabyte).toFixed(precision) + ' TB';
+        return (bytes / terabyte).toFixed(precision) + " TB";
 
     } else {
-        return bytes + ' B';
+        return bytes + " B";
     }
-};
-
+}
 function getHomeDir() {
-  return process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
-};
-
+    return process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+}
 function fill(fillWith, len){
     var buffer = new Buffer(len);
     buffer.fill(fillWith);
     return buffer.toString();
-};
-
+}
 function padRight(input, width, padWith){
     padWith = padWith || " ";
     if (input.length < width){
@@ -155,7 +154,7 @@ function padRight(input, width, padWith){
     } else {
         return input;
     }
-};
+}
 
 function exists(arr, value){
     return arr.indexOf(value) > -1;
@@ -166,4 +165,15 @@ function without(arr, toRemove){
     return arr.filter(function(item){
         return !exists(toRemove, item);
     });
-};
+}
+
+/**
+Works on an array of objects. Returns the first object with `property` set to `value`.
+@alias module:wodge.first
+*/
+function first(arr, prop, val){
+    var result = arr.filter(function(item){
+        return item[prop] ? item[prop] === val : false;
+    });
+    return result ? result[0] : null;
+}
