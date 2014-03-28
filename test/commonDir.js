@@ -14,3 +14,12 @@ test("commonDir: simple", function(t){
     t.equal(w.commonDir(input), "/Users/Lloyd/Documents/Kunai");
     t.end();
 });
+
+test("commonDir: another", function(t){
+    var input = [
+        "/Users/Lloyd/Documents/LEGO Creations/MINDSTORMS EV3 Projects/Randomness.ev3", 
+        "/Users/Lloyd/Desktop/Screen Shot 2014-03-27 at 10.00.12.png"
+    ];
+    t.equal(w.commonDir(input), "/Users/Lloyd");
+    t.end();
+});
