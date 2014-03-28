@@ -23,3 +23,21 @@ test("commonDir: another", function(t){
     t.equal(w.commonDir(input), "/Users/Lloyd");
     t.end();
 });
+
+test("commonDir: just one", function(t){
+    var input = [
+        "/Users/Lloyd/Documents/LEGO Creations/MINDSTORMS EV3 Projects/Randomness.ev3"
+    ];
+    t.equal(w.commonDir(input), "/Users/Lloyd/Documents/LEGO Creations/MINDSTORMS EV3 Projects");
+    t.end();
+});
+
+test("commonDir: all same folder", function(t){
+    var input = [
+        "/Users/Lloyd/Documents/Kunai/renamer/one",
+        "/Users/Lloyd/Documents/Kunai/renamer/two",
+        "/Users/Lloyd/Documents/Kunai/renamer/three"
+    ];
+    t.equal(w.commonDir(input), "/Users/Lloyd/Documents/Kunai/renamer");
+    t.end();
+});
