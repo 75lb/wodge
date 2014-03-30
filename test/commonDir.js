@@ -41,3 +41,13 @@ test("commonDir: all same folder", function(t){
     t.equal(w.commonDir(input), "/Users/Lloyd/Documents/Kunai/renamer");
     t.end();
 });
+
+test("commonDir: current dir", function(t){
+    var input = [
+        "one",
+        "two",
+        "three"
+    ];
+    t.equal(w.commonDir(input), "");
+    t.end();
+});
