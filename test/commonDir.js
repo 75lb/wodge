@@ -11,7 +11,17 @@ test("commonDir: simple", function(t){
         "/Users/Lloyd/Documents/Kunai/renamer/folder/three",
         "/Users/Lloyd/Documents/Kunai/renamer"
     ];
-    t.equal(w.commonDir(input), "/Users/Lloyd/Documents/Kunai");
+    t.equal(w.commonDir(input), "/Users/Lloyd/Documents/Kunai/");
+    t.end();
+});
+
+test("commonDir: wildly diff folders", function(t){
+    var input = [
+        "/this/that",
+        "/another/something",
+        "/andagain/different"
+    ];
+    t.equal(w.commonDir(input), "/");
     t.end();
 });
 
@@ -20,7 +30,7 @@ test("commonDir: another", function(t){
         "/Users/Lloyd/Documents/LEGO Creations/MINDSTORMS EV3 Projects/Randomness.ev3", 
         "/Users/Lloyd/Desktop/Screen Shot 2014-03-27 at 10.00.12.png"
     ];
-    t.equal(w.commonDir(input), "/Users/Lloyd");
+    t.equal(w.commonDir(input), "/Users/Lloyd/");
     t.end();
 });
 
@@ -28,7 +38,7 @@ test("commonDir: just one", function(t){
     var input = [
         "/Users/Lloyd/Documents/LEGO Creations/MINDSTORMS EV3 Projects/Randomness.ev3"
     ];
-    t.equal(w.commonDir(input), "/Users/Lloyd/Documents/LEGO Creations/MINDSTORMS EV3 Projects");
+    t.equal(w.commonDir(input), "/Users/Lloyd/Documents/LEGO Creations/MINDSTORMS EV3 Projects/");
     t.end();
 });
 
@@ -38,15 +48,14 @@ test("commonDir: all same folder", function(t){
         "/Users/Lloyd/Documents/Kunai/renamer/two",
         "/Users/Lloyd/Documents/Kunai/renamer/three"
     ];
-    t.equal(w.commonDir(input), "/Users/Lloyd/Documents/Kunai/renamer");
+    t.equal(w.commonDir(input), "/Users/Lloyd/Documents/Kunai/renamer/");
     t.end();
 });
 
-test("commonDir: current dir", function(t){
+test("commonDir: hangs", function(t){
     var input = [
-        "one",
-        "two",
-        "three"
+        "file1.txt",
+        "file1.txt"
     ];
     t.equal(w.commonDir(input), "");
     t.end();
