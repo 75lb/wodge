@@ -15,6 +15,17 @@ test("commonDir: simple", function(t){
     t.end();
 });
 
+test("commonDir: simple (win)", function(t){
+    var input = [
+        "C:\\Users\\IEUser\\Documents\\GitHub\\wodge",
+        "C:\\Users\\IEUser\\Documents\\GitHub\\wodge\\folder",
+        "C:\\Users\\IEUser\\Documents\\GitHub\\wodge\\folder\\five",
+        "C:\\Users\\IEUser\\Documents\\GitHub\\wodge\\folder\\four",
+    ];
+    t.equal(w.commonDir(input), "C:\\Users\\IEUser\\Documents\\GitHub\\");
+    t.end();
+});
+
 test("commonDir: wildly diff folders", function(t){
     var input = [
         "/this/that",
@@ -22,6 +33,16 @@ test("commonDir: wildly diff folders", function(t){
         "/andagain/different"
     ];
     t.equal(w.commonDir(input), "/");
+    t.end();
+});
+
+test("commonDir: wildly diff folders (win)", function(t){
+    var input = [
+        "C:\\this\\that",
+        "C:\\another\\something",
+        "C:\\andagain\\different"
+    ];
+    t.equal(w.commonDir(input), "C:\\");
     t.end();
 });
 
@@ -39,6 +60,14 @@ test("commonDir: just one", function(t){
         "/Users/Lloyd/Documents/LEGO Creations/MINDSTORMS EV3 Projects/Randomness.ev3"
     ];
     t.equal(w.commonDir(input), "/Users/Lloyd/Documents/LEGO Creations/MINDSTORMS EV3 Projects/");
+    t.end();
+});
+
+test("commonDir: just one (win)", function(t){
+    var input = [
+        "C:\\Users\\Lloyd\\Documents\\LEGO Creations\\MINDSTORMS EV3 Projects\\Randomness.ev3"
+    ];
+    t.equal(w.commonDir(input), "C:\\Users\\Lloyd\\Documents\\LEGO Creations\\MINDSTORMS EV3 Projects\\");
     t.end();
 });
 
