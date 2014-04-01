@@ -2,7 +2,7 @@ var test = require("tape"),
     os = require("os"),
     w = require("../");
 
-if (os.platform === "win32"){
+if (os.platform() === "win32"){
     test("commonDir: simple (win)", function(t){
         var input = [
             "C:\\Users\\IEUser\\Documents\\GitHub\\wodge",
