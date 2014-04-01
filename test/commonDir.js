@@ -10,7 +10,7 @@ if (os.platform() === "win32"){
             "C:\\Users\\IEUser\\Documents\\GitHub\\wodge\\folder\\five",
             "C:\\Users\\IEUser\\Documents\\GitHub\\wodge\\folder\\four",
         ];
-        t.equal(w.commonDir(input), "C:\\Users\\IEUser\\Documents\\GitHub");
+        t.equal(w.commonDir(input), "C:\\Users\\IEUser\\Documents\\GitHub\\");
         t.end();
     });
 
