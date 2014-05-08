@@ -14,7 +14,7 @@ extend
 --------
 Merge a list of objects, left to right, into one.
 
-```
+```js
 w.extend({}, { one: 1, three: 3 }, { one: "one", two: 2 }, { four: 4 });
 // { one: "one", two: 2, three: 3, four: 4 }
 ```
@@ -24,7 +24,7 @@ escapeRegExp
 --------
 escape special regular expression characters
 
-```
+```js
 w.escapeRegExp("(.*)"); // => '\\(\\.\\*\\)'
 ```
 
@@ -52,7 +52,7 @@ exists
 --------
 
 
-```
+```js
 exists([ 1, 2, 3 ], 2)             // true
 exists([
     { result: false, number: 1 },
