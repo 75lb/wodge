@@ -1,6 +1,6 @@
 {
   "name": "wodge",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "a wodge of functional dough",
   "main": "lib/wodge.js",
   "author": "Lloyd Brookes",
@@ -12,16 +12,16 @@
     "test": "tape test/*.js"
   },
   "testling": {
-     "files": "test/*.js",
-     "browsers": [
-       "ie/6..latest",
-       "chrome/22..latest",
-       "firefox/16..latest",
-       "safari/latest",
-       "opera/11.0..latest",
-       "iphone/6",
-       "ipad/6",
-       "android-browser/latest"
-     ]
-   }
+    "files": "test/*.js",
+    "browsers": [
+      "ie/6..latest",
+      "chrome/22..latest",
+      "firefox/16..latest",
+      "safari/latest",
+      "opera/11.0..latest",
+      "iphone/6",
+      "ipad/6",
+      "android-browser/latest"
+    ]
+  }
 }
