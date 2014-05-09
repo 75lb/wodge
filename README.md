@@ -26,20 +26,20 @@ object {Object} - a sequence of Object instances to be extended
   four: 4 }
 ```
 ##clone
-Returns a copy of the input object
+Creates a new object, copying the properties from the input object
 
 ###Parameters
 input {Object} - the object to clone  
 
 ###Example
 ```js
-> a = new Date()
+> date = new Date()
 Fri May 09 2014 13:54:34 GMT+0200 (CEST)
-> w.clone(a)
+> w.clone(date)
 {}  // a Date instance doensn't own any properties
-> a.clive = "hater"
+> date.clive = "hater"
 'hater'
-> w.clone(a)
+> w.clone(date)
 { clive: 'hater' }
 ```
 **Returns** Object 
@@ -48,13 +48,13 @@ Fri May 09 2014 13:54:34 GMT+0200 (CEST)
 Returns a clone of the input object, minus the specified properties
 
 ###Parameters
-input {Object} - the object to clone  
+object {Object} - the object to clone  
 toOmit {string[]} - an array of property names to omit from the clone  
 
 ###Example
 ```js
-w.omit({ one: 1, two: 2, three: 3, four: 4 }, [ "two", "four" ]);
-// { one: 1, three: 3 }
+> w.omit({ one: 1, two: 2, three: 3, four: 4 }, [ "two", "four" ]);
+{ one: 1, three: 3 }
 ```
 **Returns** Object 
 
@@ -63,8 +63,8 @@ escape special regular expression characters
 
 ###Example
 ```js
-w.escapeRegExp("(.*)"); 
-// '\\(\\.\\*\\)'
+> w.escapeRegExp("(.*)");
+'\\(\\.\\*\\)'
 ```
 ##pluck
 Plucks the value of the specified property from each object in the input array
@@ -75,29 +75,57 @@ the {string} - property to pluck
 
 ###Example
 ```js
-var data = [
-    {one: 1, two: 2},
-    {two: "two"},
-    {one: "one", two: "zwei"},
-];
-
-w.pluck(data, "one");
-// [ 1, "one" ]
-
-w.pluck(data, "two");
-// [ 2, "two", "zwei" ]
-
-w.pluck(data, "one", "two");
-// [ 1, "two", "one" ]
+> var data = [
+...     {one: 1, two: 2},
+...     {two: "two"},
+...     {one: "one", two: "zwei"},
+... ];
+undefined
+> w.pluck(data, "one");
+[ 1, 'one' ]
+> w.pluck(data, "two");
+[ 2, 'two', 'zwei' ]
+> w.pluck(data, "one", "two");
+[ 1, 'two', 'one' ]
 ```
 **Returns** Array 
 
 ##isNumber
 Returns true if input is a number
 
+###Example
+```js
+> w.isNumber(0)
+true
+> w.isNumber(1)
+true
+> w.isNumber(1.1)
+true
+> w.isNumber(0xff)
+true
+> w.isNumber(0644)
+true
+> w.isNumber(6.2e5)
+true
+> w.isNumber(a)
+false
+> w.isNumber(NaN)
+false
+> w.isNumber(Infinity)
+false
+```
 ##isPlainObject
-Returns true if input is an object (not an Array)
+Returns true if input type is `object` and not an Array
 
+###Example
+```js
+> w.isPlainObject(new Date())
+true
+> w.isPlainObject({ clive: "hater" })
+true
+> w.isPlainObject([ 0, 1 ])
+false
+```
 ##arrayify
 Takes input and guarantees an array back. Result can be one of three things:
 

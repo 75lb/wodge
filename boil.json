@@ -26,7 +26,7 @@
             "name": "clone",
             "access": "",
             "virtual": false,
-            "description": "Returns a copy of the input object",
+            "description": "Creates a new object, copying the properties from the input object",
             "parameters": [
                 {
                     "name": "input",
@@ -38,7 +38,7 @@
                 }
             ],
             "examples": [
-                "> a = new Date()\nFri May 09 2014 13:54:34 GMT+0200 (CEST)\n> w.clone(a)\n{}  // a Date instance doensn't own any properties\n> a.clive = \"hater\"\n'hater'\n> w.clone(a)\n{ clive: 'hater' }"
+                "> date = new Date()\nFri May 09 2014 13:54:34 GMT+0200 (CEST)\n> w.clone(date)\n{}  // a Date instance doensn't own any properties\n> date.clive = \"hater\"\n'hater'\n> w.clone(date)\n{ clive: 'hater' }"
             ],
             "returns": {
                 "type": "Object",
@@ -52,7 +52,7 @@
             "description": "Returns a clone of the input object, minus the specified properties",
             "parameters": [
                 {
-                    "name": "input",
+                    "name": "object",
                     "type": "Object",
                     "description": "the object to clone",
                     "default": "",
@@ -69,7 +69,7 @@
                 }
             ],
             "examples": [
-                "w.omit({ one: 1, two: 2, three: 3, four: 4 }, [ \"two\", \"four\" ]);\n// { one: 1, three: 3 }"
+                "> w.omit({ one: 1, two: 2, three: 3, four: 4 }, [ \"two\", \"four\" ]);\n{ one: 1, three: 3 }"
             ],
             "returns": {
                 "type": "Object",
@@ -83,7 +83,7 @@
             "description": "escape special regular expression characters",
             "parameters": [],
             "examples": [
-                "w.escapeRegExp(\"(.*)\"); \n// '\\\\(\\\\.\\\\*\\\\)'"
+                "> w.escapeRegExp(\"(.*)\");\n'\\\\(\\\\.\\\\*\\\\)'"
             ]
         },
         {
@@ -110,7 +110,7 @@
                 }
             ],
             "examples": [
-                "var data = [\n    {one: 1, two: 2},\n    {two: \"two\"},\n    {one: \"one\", two: \"zwei\"},\n];\n\nw.pluck(data, \"one\");\n// [ 1, \"one\" ]\n\nw.pluck(data, \"two\");\n// [ 2, \"two\", \"zwei\" ]\n\nw.pluck(data, \"one\", \"two\");\n// [ 1, \"two\", \"one\" ]"
+                "> var data = [\n...     {one: 1, two: 2},\n...     {two: \"two\"},\n...     {one: \"one\", two: \"zwei\"},\n... ];\nundefined\n> w.pluck(data, \"one\");\n[ 1, 'one' ]\n> w.pluck(data, \"two\");\n[ 2, 'two', 'zwei' ]\n> w.pluck(data, \"one\", \"two\");\n[ 1, 'two', 'one' ]"
             ],
             "returns": {
                 "type": "Array",
@@ -123,15 +123,19 @@
             "virtual": false,
             "description": "Returns true if input is a number",
             "parameters": [],
-            "examples": []
+            "examples": [
+                "> w.isNumber(0)\ntrue\n> w.isNumber(1)\ntrue\n> w.isNumber(1.1)\ntrue\n> w.isNumber(0xff)\ntrue\n> w.isNumber(0644)\ntrue\n> w.isNumber(6.2e5)\ntrue\n> w.isNumber(a)\nfalse\n> w.isNumber(NaN)\nfalse\n> w.isNumber(Infinity)\nfalse"
+            ]
         },
         {
             "name": "isPlainObject",
             "access": "",
             "virtual": false,
-            "description": "Returns true if input is an object (not an Array)",
+            "description": "Returns true if input type is `object` and not an Array",
             "parameters": [],
-            "examples": []
+            "examples": [
+                "> w.isPlainObject(new Date())\ntrue\n> w.isPlainObject({ clive: \"hater\" })\ntrue\n> w.isPlainObject([ 0, 1 ])\nfalse"
+            ]
         },
         {
             "name": "arrayify",
