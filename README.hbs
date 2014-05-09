@@ -17,7 +17,7 @@ Generated jsdoc documentation.
 {{/if~}}
 
 {{#if parameters}}###Parameters
-{{#each parameters}}{{name}} { {{~type~}} } - {{{description}}}  
+{{#each parameters}}{{name}} { {{~type~}} } - {{{description}}}{{#if optional}} *optional*{{/if}}{{#if default}} *default={{{default}}}*{{/if}}  
 {{/each}}
 {{/if~}}
 

@@ -197,7 +197,7 @@ Convert bytes to human-readable size
 
 ###Parameters
 bytes {number} - the bytes value to convert  
-precision {number} - number of decimal places  
+precision {number} - number of decimal places *optional* *default=0*  
 
 ###Example
 ```js
@@ -220,6 +220,41 @@ Cross-platform home directory retriever
 > w.getHomeDir()
 '/Users/Lloyd'
 ```
+##fill
+Create a new string filled with the supplied character
+
+###Parameters
+fillWith {string} - the fill character  
+len {number} - the length of the output string  
+
+###Example
+```js
+> w.fill("a", 10)
+'aaaaaaaaaa'
+> w.fill("ab", 10)
+'aaaaaaaaaa'
+```
+**Returns** string 
+
+##padRight
+Add padding to the right of a string
+
+###Parameters
+input {string} - the string to pad  
+width {number} - the desired final width  
+padWith {string} - the padding character *optional* *default=" "*  
+
+###Example
+```js
+> w.padRight("clive", 1)
+'clive'
+> w.padRight("clive", 1, "-")
+'clive'
+> w.padRight("clive", 10, "-")
+'clive-----'
+```
+**Returns** string 
+
 ##exists
 ###Example
 ```js

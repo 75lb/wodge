@@ -1,6 +1,6 @@
 {
     "readme":{
-        "template": "[![view on npm](http:\/\/img.shields.io\/npm\/v\/wodge.svg)](https:\/\/www.npmjs.org\/package\/wodge)\n![npm module downloads per month](http:\/\/img.shields.io\/npm\/dm\/wodge.svg)\n[![Dependency Status](https:\/\/david-dm.org\/75lb\/wodge.svg)](https:\/\/david-dm.org\/75lb\/wodge)\n![Analytics](https:\/\/ga-beacon.appspot.com\/UA-27725889-25\/wodge\/README.md?pixel)\n\n[![browser support](https:\/\/ci.testling.com\/75lb\/wodge.png)](https:\/\/ci.testling.com\/75lb\/wodge)\n\n#wodge\nA collection of useful functions.\n\n#API Documentation\nGenerated jsdoc documentation.\n\n{{#if functions}}{{#each functions}}##{{{name}}}\n{{#if description}}{{{description}}}\n\n{{\/if~}}\n\n{{#if parameters}}###Parameters\n{{#each parameters}}{{name}} { {{~type~}} } - {{{description}}}  \n{{\/each}}\n{{\/if~}}\n\n{{#if examples}}###Example\n{{#each examples}}```js\n{{{this}}}\n```\n{{\/each}}{{\/if~}}\n\n{{#if returns}}**Returns** {{returns.type}} {{{returns.description}}}\n\n{{\/if~}}\n\n\n{{\/each}}{{\/if}}",
+        "template": "[![view on npm](http:\/\/img.shields.io\/npm\/v\/wodge.svg)](https:\/\/www.npmjs.org\/package\/wodge)\n![npm module downloads per month](http:\/\/img.shields.io\/npm\/dm\/wodge.svg)\n[![Dependency Status](https:\/\/david-dm.org\/75lb\/wodge.svg)](https:\/\/david-dm.org\/75lb\/wodge)\n![Analytics](https:\/\/ga-beacon.appspot.com\/UA-27725889-25\/wodge\/README.md?pixel)\n\n[![browser support](https:\/\/ci.testling.com\/75lb\/wodge.png)](https:\/\/ci.testling.com\/75lb\/wodge)\n\n#wodge\nA collection of useful functions.\n\n#API Documentation\nGenerated jsdoc documentation.\n\n{{#if functions}}{{#each functions}}##{{{name}}}\n{{#if description}}{{{description}}}\n\n{{\/if~}}\n\n{{#if parameters}}###Parameters\n{{#each parameters}}{{name}} { {{~type~}} } - {{{description}}}{{#if optional}} *optional*{{\/if}}{{#if default}} *default={{{default}}}*{{\/if}}  \n{{\/each}}\n{{\/if~}}\n\n{{#if examples}}###Example\n{{#each examples}}```js\n{{{this}}}\n```\n{{\/each}}{{\/if~}}\n\n{{#if returns}}**Returns** {{returns.type}} {{{returns.description}}}\n\n{{\/if~}}\n\n\n{{\/each}}{{\/if}}",
         "data": {
     "functions": [
         {
@@ -249,7 +249,7 @@
                     "name": "precision",
                     "type": "number",
                     "description": "number of decimal places",
-                    "default": "",
+                    "default": "0",
                     "optional": true,
                     "nullable": ""
                 }
@@ -271,6 +271,76 @@
             "examples": [
                 "> w.getHomeDir()\n'/Users/Lloyd'"
             ]
+        },
+        {
+            "name": "fill",
+            "access": "",
+            "virtual": false,
+            "description": "Create a new string filled with the supplied character",
+            "parameters": [
+                {
+                    "name": "fillWith",
+                    "type": "string",
+                    "description": "the fill character",
+                    "default": "",
+                    "optional": "",
+                    "nullable": ""
+                },
+                {
+                    "name": "len",
+                    "type": "number",
+                    "description": "the length of the output string",
+                    "default": "",
+                    "optional": "",
+                    "nullable": ""
+                }
+            ],
+            "examples": [
+                "> w.fill(\"a\", 10)\n'aaaaaaaaaa'\n> w.fill(\"ab\", 10)\n'aaaaaaaaaa'"
+            ],
+            "returns": {
+                "type": "string",
+                "description": ""
+            }
+        },
+        {
+            "name": "padRight",
+            "access": "",
+            "virtual": false,
+            "description": "Add padding to the right of a string",
+            "parameters": [
+                {
+                    "name": "input",
+                    "type": "string",
+                    "description": "the string to pad",
+                    "default": "",
+                    "optional": "",
+                    "nullable": ""
+                },
+                {
+                    "name": "width",
+                    "type": "number",
+                    "description": "the desired final width",
+                    "default": "",
+                    "optional": "",
+                    "nullable": ""
+                },
+                {
+                    "name": "padWith",
+                    "type": "string",
+                    "description": "the padding character",
+                    "default": "\" \"",
+                    "optional": true,
+                    "nullable": ""
+                }
+            ],
+            "examples": [
+                "> w.padRight(\"clive\", 1)\n'clive'\n> w.padRight(\"clive\", 1, \"-\")\n'clive'\n> w.padRight(\"clive\", 10, \"-\")\n'clive-----'"
+            ],
+            "returns": {
+                "type": "string",
+                "description": ""
+            }
         },
         {
             "name": "exists",
