@@ -17,7 +17,7 @@ Generated jsdoc documentation.
 {{/if~}}
 
 {{#if parameters}}###Parameters
-{{#each parameters}}{{name}} { {{~type~}} } - {{{description}}}
+{{#each parameters}}{{name}} { {{~type~}} } - {{{description}}}  
 {{/each}}
 {{/if~}}
 
@@ -27,7 +27,7 @@ Generated jsdoc documentation.
 ```
 {{/each}}{{/if~}}
 
-{{#if returns}}**Returns** {{returns.type}} {{returns.description}}
+{{#if returns}}**Returns** {{returns.type}} {{{returns.description}}}
 
 {{/if~}}
 

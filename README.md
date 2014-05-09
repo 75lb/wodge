@@ -15,7 +15,7 @@ Generated jsdoc documentation.
 Merge a list of objects, left to right, into one.
 
 ###Parameters
-object {Object} - a sequence of Object instances to be extended
+object {Object} - a sequence of Object instances to be extended  
 
 ###Example
 ```js
@@ -26,7 +26,7 @@ w.extend({}, { one: 1, three: 3 }, { one: "one", two: 2 }, { four: 4 });
 Returns a copy of the input object
 
 ###Parameters
-input {Object} - the object to clone
+input {Object} - the object to clone  
 
 **Returns** Object 
 
@@ -34,8 +34,8 @@ input {Object} - the object to clone
 Returns a clone of the input object, minus the specified properties
 
 ###Parameters
-input {Object} - the object to clone
-toOmit {string[]} - an array of property names to omit from the clone
+input {Object} - the object to clone  
+toOmit {string[]} - an array of property names to omit from the clone  
 
 ###Example
 ```js
@@ -56,8 +56,8 @@ w.escapeRegExp("(.*)");
 Plucks the value of the specified property from each object in the input array
 
 ###Parameters
-arrayOfObjects {Object[]} - the input array of objects
-the {string} - property to pluck
+arrayOfObjects {Object[]} - the input array of objects  
+the {string} - property to pluck  
 
 ###Example
 ```js
@@ -78,12 +78,59 @@ w.pluck(data, "one", "two");
 ```
 **Returns** Array 
 
+##isNumber
+Returns true if input is a number
+
+##isPlainObject
+Returns true if input is an object (not an Array)
+
 ##arrayify
-Either:
+Takes input and guarantees an array back. Result can be one of three things:
 
 - puts a single scalar in an array
-- converts array-like object to a real array
+- converts array-like object (e.g. `arguments`) to a real array
 - converts null or undefined to an empty array
+
+###Parameters
+input {*} - the input value to convert to an array  
+
+**Returns** Array 
+
+##every
+Returns true if the supplied iterator function returns true for every property in the object
+
+###Parameters
+object {Object} - the object to inspect  
+iterator {function} - the iterator function to run against each key/value pair, the args are `(value, key)`.  
+
+**Returns** Boolean 
+
+##each
+Runs the iterator function against every key/value pair in the input object
+
+###Parameters
+object {Object} - the object to iterate  
+callback {function} - the iterator function to run against each key/value pair, the args are `(value, key)`.  
+
+##bytesToSize
+Convert bytes to human-readable size
+
+###Parameters
+bytes {number} - the bytes value to convert  
+precision {number} - number of decimal places  
+
+###Example
+```js
+> w.bytesToSize(10000)
+'10 KB'
+> w.bytesToSize(10000, 1)
+'9.8 KB'
+> w.bytesToSize(10000, 2)
+'9.77 KB'
+> w.bytesToSize(10000, 3)
+'9.766 KB'
+```
+**Returns** string 
 
 ##getHomeDir
 Cross-platform home directory retriever
@@ -104,8 +151,8 @@ Works on an array of objects. Returns the first object with `property` set to `v
 commonDir returns the directory common to each path in the list
 
 ###Parameters
-files {Array} - An array of file paths to inspect
+files {Array} - An array of file paths to inspect  
 
-**Returns** string - A single path ending with the path separator, e.g. &quot;/user/some/folder/&quot;
+**Returns** string - A single path ending with the path separator, e.g. "/user/some/folder/"
 
 
