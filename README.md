@@ -17,6 +17,17 @@ Merge a list of objects, left to right, into one.
 w.extend({}, { one: 1, three: 3 }, { one: "one", two: 2 }, { four: 4 });
 // { one: "one", two: 2, three: 3, four: 4 }
 ```
+###Parameters
+object {Object} - a sequence of Object instances to be extended
+
+##clone
+Returns a copy of the input object
+
+###Parameters
+input {Object} - the object to clone
+
+**Returns** Object 
+
 ##escapeRegExp
 escape special regular expression characters
 
@@ -54,4 +65,7 @@ commonDir returns the directory common to each path in the list
 
 ###Parameters
 files {Array} - An array of file paths to inspect
+
+**Returns** string - A single path ending with the path separator, e.g. &quot;/user/some/folder/&quot;
+
 
