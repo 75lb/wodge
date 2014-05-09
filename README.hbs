@@ -21,13 +21,13 @@ Generated jsdoc documentation.
 {{/each}}
 {{/if~}}
 
+{{#if returns}}**Returns** {{returns.type}} {{{returns.description}}}
+
 {{#if examples}}###Example
 {{#each examples}}```js
 {{{this}}}
 ```
 {{/each}}{{/if~}}
-
-{{#if returns}}**Returns** {{returns.type}} {{{returns.description}}}
 
 {{/if~}}
 
