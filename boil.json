@@ -26,22 +26,28 @@
             "name": "clone",
             "access": "",
             "virtual": false,
-            "description": "Creates a new object, copying the properties from the input object",
+            "description": "Clones an object or array",
             "parameters": [
                 {
                     "name": "input",
-                    "type": "Object",
-                    "description": "the object to clone",
+                    "type": [
+                        "Object",
+                        "Array"
+                    ],
+                    "description": "the input to clone",
                     "default": "",
                     "optional": "",
                     "nullable": ""
                 }
             ],
             "examples": [
-                "> date = new Date()\nFri May 09 2014 13:54:34 GMT+0200 (CEST)\n> w.clone(date)\n{}  // a Date instance doensn't own any properties\n> date.clive = \"hater\"\n'hater'\n> w.clone(date)\n{ clive: 'hater' }"
+                "> date = new Date()\nFri May 09 2014 13:54:34 GMT+0200 (CEST)\n> w.clone(date)\n{}  // a Date instance doensn't own any properties\n> date.clive = \"hater\"\n'hater'\n> w.clone(date)\n{ clive: 'hater' }\n> array = [1,2,3]\n[ 1, 2, 3 ]\n> newArray = w.clone(array)\n[ 1, 2, 3 ]\n> array === newArray\nfalse"
             ],
             "returns": {
-                "type": "Object",
+                "type": [
+                    "Object",
+                    "Array"
+                ],
                 "description": ""
             }
         },
@@ -408,9 +414,43 @@
             "name": "first",
             "access": "",
             "virtual": false,
-            "description": "Works on an array of objects. Returns the first object with `property` set to `value`.",
-            "parameters": [],
-            "examples": []
+            "description": "Returns the first object in the input array with `property` set to `value`.",
+            "parameters": [
+                {
+                    "name": "objectArray",
+                    "type": "Object[]",
+                    "description": "input array of objects",
+                    "default": "",
+                    "optional": "",
+                    "nullable": ""
+                },
+                {
+                    "name": "prop",
+                    "type": "string",
+                    "description": "property to inspect",
+                    "default": "",
+                    "optional": "",
+                    "nullable": ""
+                },
+                {
+                    "name": "val",
+                    "type": "*",
+                    "description": "desired value",
+                    "default": "",
+                    "optional": "",
+                    "nullable": ""
+                }
+            ],
+            "examples": [
+                "> w.first([{ product: \"egg\", stock: true }, { product: \"chicken\", stock: true }], \"stock\", true)\n{ product: 'egg', stock: true }\n> w.first([{ product: \"egg\", stock: true }, { product: \"chicken\", stock: true }], \"stock\", false)\nundefined"
+            ],
+            "returns": {
+                "type": [
+                    "Object",
+                    "undefined"
+                ],
+                "description": ""
+            }
         },
         {
             "name": "commonDir",
@@ -427,11 +467,84 @@
                     "nullable": ""
                 }
             ],
-            "examples": [],
+            "examples": [
+                "> files = fs.readdirSync(\".\").map(function(file){ return path.resolve(file); })\n[ '/Users/Lloyd/Documents/75lb/wodge/.DS_Store',\n  '/Users/Lloyd/Documents/75lb/wodge/.git',\n  '/Users/Lloyd/Documents/75lb/wodge/.gitignore',\n  '/Users/Lloyd/Documents/75lb/wodge/.jshintrc',\n  '/Users/Lloyd/Documents/75lb/wodge/README.md',\n  '/Users/Lloyd/Documents/75lb/wodge/lib',\n  '/Users/Lloyd/Documents/75lb/wodge/node_modules',\n  '/Users/Lloyd/Documents/75lb/wodge/package.json',\n  '/Users/Lloyd/Documents/75lb/wodge/test' ]\n> w.commonDir(files)\n'/Users/Lloyd/Documents/75lb/wodge/'"
+            ],
             "returns": {
                 "type": "string",
                 "description": "- A single path ending with the path separator, e.g. \"/user/some/folder/\""
             }
+        },
+        {
+            "name": "union",
+            "access": "",
+            "virtual": false,
+            "description": "merge two arrays into a single array of unique values",
+            "parameters": [],
+            "examples": [
+                "> var array1 = [ 1, 2 ], array2 = [ 2, 3 ];\nundefined\n> w.union(array1, array2)\n[ 1, 2, 3 ]\n> var array1 = [ { id: 1 }, { id: 2 } ], array2 = [ { id: 2 }, { id: 3 } ];\nundefined\n> w.union(array1, array2)\n[ { id: 1 }, { id: 2 }, { id: 3 } ]\n> var array2 = [ { id: 2, blah: true }, { id: 3 } ]\nundefined\n> w.union(array1, array2)\n[ { id: 1 },\n  { id: 2 },\n  { id: 2, blah: true },\n  { id: 3 } ]\n> w.union(array1, array2, \"id\")\n[ { id: 1 }, { id: 2 }, { id: 3 } ]"
+            ]
+        },
+        {
+            "name": "commonSequence",
+            "access": "",
+            "virtual": false,
+            "description": "Returns the initial elements which both input arrays have in common",
+            "parameters": [
+                {
+                    "name": "a",
+                    "type": "Array",
+                    "description": "",
+                    "default": "",
+                    "optional": "",
+                    "nullable": ""
+                },
+                {
+                    "name": "b",
+                    "type": "Array",
+                    "description": "",
+                    "default": "",
+                    "optional": "",
+                    "nullable": ""
+                }
+            ],
+            "examples": [
+                "> w.commonSequence([1,2,3], [1,2,4])\n[ 1, 2 ]"
+            ],
+            "returns": {
+                "type": "Array",
+                "description": ""
+            }
+        },
+        {
+            "name": "escapeForJSON",
+            "access": "",
+            "virtual": false,
+            "description": "strips special characters, making suitable for storage in a JS/JSON string",
+            "parameters": [
+                {
+                    "name": "input",
+                    "type": "string",
+                    "description": "the input",
+                    "default": "",
+                    "optional": "",
+                    "nullable": ""
+                }
+            ],
+            "examples": [],
+            "returns": {
+                "type": "string",
+                "description": ""
+            }
+        }
+    ],
+    "properties": [
+        {
+            "name": "symbol",
+            "access": "",
+            "virtual": false,
+            "description": "some cross platform symbols (`tick` and `cross`)",
+            "type": ""
         }
     ]
 }

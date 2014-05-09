@@ -26,10 +26,10 @@ object {Object} - a sequence of Object instances to be extended
   four: 4 }
 ```
 ##clone
-Creates a new object, copying the properties from the input object
+Clones an object or array
 
 ###Parameters
-input {Object} - the object to clone  
+input {Object,Array} - the input to clone  
 
 ###Example
 ```js
@@ -41,8 +41,14 @@ Fri May 09 2014 13:54:34 GMT+0200 (CEST)
 'hater'
 > w.clone(date)
 { clive: 'hater' }
+> array = [1,2,3]
+[ 1, 2, 3 ]
+> newArray = w.clone(array)
+[ 1, 2, 3 ]
+> array === newArray
+false
 ```
-**Returns** Object 
+**Returns** Object,Array 
 
 ##omit
 Returns a clone of the input object, minus the specified properties
@@ -292,7 +298,21 @@ toRemove {*} - a single, or array of values to omit
 **Returns** Array 
 
 ##first
-Works on an array of objects. Returns the first object with `property` set to `value`.
+Returns the first object in the input array with `property` set to `value`.
+
+###Parameters
+objectArray {Object[]} - input array of objects  
+prop {string} - property to inspect  
+val {*} - desired value  
+
+###Example
+```js
+> w.first([{ product: "egg", stock: true }, { product: "chicken", stock: true }], "stock", true)
+{ product: 'egg', stock: true }
+> w.first([{ product: "egg", stock: true }, { product: "chicken", stock: true }], "stock", false)
+undefined
+```
+**Returns** Object,undefined 
 
 ##commonDir
 commonDir returns the directory common to each path in the list
@@ -300,6 +320,66 @@ commonDir returns the directory common to each path in the list
 ###Parameters
 files {Array} - An array of file paths to inspect  
 
+###Example
+```js
+> files = fs.readdirSync(".").map(function(file){ return path.resolve(file); })
+[ '/Users/Lloyd/Documents/75lb/wodge/.DS_Store',
+  '/Users/Lloyd/Documents/75lb/wodge/.git',
+  '/Users/Lloyd/Documents/75lb/wodge/.gitignore',
+  '/Users/Lloyd/Documents/75lb/wodge/.jshintrc',
+  '/Users/Lloyd/Documents/75lb/wodge/README.md',
+  '/Users/Lloyd/Documents/75lb/wodge/lib',
+  '/Users/Lloyd/Documents/75lb/wodge/node_modules',
+  '/Users/Lloyd/Documents/75lb/wodge/package.json',
+  '/Users/Lloyd/Documents/75lb/wodge/test' ]
+> w.commonDir(files)
+'/Users/Lloyd/Documents/75lb/wodge/'
+```
 **Returns** string - A single path ending with the path separator, e.g. "/user/some/folder/"
+
+##union
+merge two arrays into a single array of unique values
+
+###Example
+```js
+> var array1 = [ 1, 2 ], array2 = [ 2, 3 ];
+undefined
+> w.union(array1, array2)
+[ 1, 2, 3 ]
+> var array1 = [ { id: 1 }, { id: 2 } ], array2 = [ { id: 2 }, { id: 3 } ];
+undefined
+> w.union(array1, array2)
+[ { id: 1 }, { id: 2 }, { id: 3 } ]
+> var array2 = [ { id: 2, blah: true }, { id: 3 } ]
+undefined
+> w.union(array1, array2)
+[ { id: 1 },
+  { id: 2 },
+  { id: 2, blah: true },
+  { id: 3 } ]
+> w.union(array1, array2, "id")
+[ { id: 1 }, { id: 2 }, { id: 3 } ]
+```
+##commonSequence
+Returns the initial elements which both input arrays have in common
+
+###Parameters
+a {Array} -   
+b {Array} -   
+
+###Example
+```js
+> w.commonSequence([1,2,3], [1,2,4])
+[ 1, 2 ]
+```
+**Returns** Array 
+
+##escapeForJSON
+strips special characters, making suitable for storage in a JS/JSON string
+
+###Parameters
+input {string} - the input  
+
+**Returns** string 
 
 
