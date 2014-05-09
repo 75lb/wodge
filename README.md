@@ -117,6 +117,9 @@ false
 ##isPlainObject
 Returns true if input type is `object` and not an Array
 
+###Parameters
+input {*} - the input to test  
+
 ###Example
 ```js
 > w.isPlainObject(new Date())
@@ -126,6 +129,8 @@ true
 > w.isPlainObject([ 0, 1 ])
 false
 ```
+**Returns** boolean 
+
 ##arrayify
 Takes input and guarantees an array back. Result can be one of three things:
 
@@ -136,6 +141,19 @@ Takes input and guarantees an array back. Result can be one of three things:
 ###Parameters
 input {*} - the input value to convert to an array  
 
+###Example
+```js
+> w.arrayify(null)
+[]
+> w.arrayify(0)
+[ 0 ]
+> w.arrayify([ 1, 2 ])
+[ 1, 2 ]
+> function f(){ return w.arrayify(arguments); }
+undefined
+> f(1,2,3)
+[ 1, 2, 3 ]
+```
 **Returns** Array 
 
 ##every
@@ -145,6 +163,15 @@ Returns true if the supplied iterator function returns true for every property i
 object {Object} - the object to inspect  
 iterator {function} - the iterator function to run against each key/value pair, the args are `(value, key)`.  
 
+###Example
+```js
+> function aboveTen(input){ return input > 10; }
+undefined
+> w.every({ eggs: 12, carrots: 30, peas: 100 }, aboveTen)
+true
+> w.every({ eggs: 6, carrots: 30, peas: 100 }, aboveTen)
+false
+```
 **Returns** Boolean 
 
 ##each
@@ -154,6 +181,17 @@ Runs the iterator function against every key/value pair in the input object
 object {Object} - the object to iterate  
 callback {function} - the iterator function to run against each key/value pair, the args are `(value, key)`.  
 
+###Example
+```js
+> var total = 0;
+undefined
+> function addToTotal(n){ total += n; }
+undefined
+> w.each({ eggs: 3, celery: 2, carrots: 1 }, addToTotal)
+undefined
+> total
+6
+```
 ##bytesToSize
 Convert bytes to human-readable size
 

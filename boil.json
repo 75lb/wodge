@@ -132,10 +132,23 @@
             "access": "",
             "virtual": false,
             "description": "Returns true if input type is `object` and not an Array",
-            "parameters": [],
+            "parameters": [
+                {
+                    "name": "input",
+                    "type": "*",
+                    "description": "the input to test",
+                    "default": "",
+                    "optional": "",
+                    "nullable": ""
+                }
+            ],
             "examples": [
                 "> w.isPlainObject(new Date())\ntrue\n> w.isPlainObject({ clive: \"hater\" })\ntrue\n> w.isPlainObject([ 0, 1 ])\nfalse"
-            ]
+            ],
+            "returns": {
+                "type": "boolean",
+                "description": ""
+            }
         },
         {
             "name": "arrayify",
@@ -152,7 +165,9 @@
                     "nullable": ""
                 }
             ],
-            "examples": [],
+            "examples": [
+                "> w.arrayify(null)\n[]\n> w.arrayify(0)\n[ 0 ]\n> w.arrayify([ 1, 2 ])\n[ 1, 2 ]\n> function f(){ return w.arrayify(arguments); }\nundefined\n> f(1,2,3)\n[ 1, 2, 3 ]"
+            ],
             "returns": {
                 "type": "Array",
                 "description": ""
@@ -181,7 +196,9 @@
                     "nullable": ""
                 }
             ],
-            "examples": [],
+            "examples": [
+                "> function aboveTen(input){ return input > 10; }\nundefined\n> w.every({ eggs: 12, carrots: 30, peas: 100 }, aboveTen)\ntrue\n> w.every({ eggs: 6, carrots: 30, peas: 100 }, aboveTen)\nfalse"
+            ],
             "returns": {
                 "type": "Boolean",
                 "description": ""
@@ -210,7 +227,9 @@
                     "nullable": ""
                 }
             ],
-            "examples": []
+            "examples": [
+                "> var total = 0;\nundefined\n> function addToTotal(n){ total += n; }\nundefined\n> w.each({ eggs: 3, celery: 2, carrots: 1 }, addToTotal)\nundefined\n> total\n6"
+            ]
         },
         {
             "name": "bytesToSize",
