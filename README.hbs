@@ -14,16 +14,16 @@ Generated jsdoc documentation.
 
 {{/if~}}
 
+{{#if parameters}}###Parameters
+{{#each parameters}}{{name}} { {{~type~}} } - {{{description}}}
+{{/each}}
+{{/if~}}
+
 {{#if examples}}###Examples
 {{#each examples}}```js
 {{{this}}}
 ```
 {{/each}}{{/if~}}
-
-{{#if parameters}}###Parameters
-{{#each parameters}}{{name}} { {{~type~}} } - {{{description}}}
-{{/each}}
-{{/if~}}
 
 {{#if returns}}**Returns** {{returns.type}} {{returns.description}}
 
