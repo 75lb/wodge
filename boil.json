@@ -81,16 +81,39 @@
             "description": "escape special regular expression characters",
             "parameters": [],
             "examples": [
-                "w.escapeRegExp(\"(.*)\"); // => '\\\\(\\\\.\\\\*\\\\)'"
+                "w.escapeRegExp(\"(.*)\"); \n// '\\\\(\\\\.\\\\*\\\\)'"
             ]
         },
         {
             "name": "pluck",
             "access": "",
             "virtual": false,
-            "description": "return the first existing property",
-            "parameters": [],
-            "examples": []
+            "description": "Plucks the value of the specified property from each object in the input array",
+            "parameters": [
+                {
+                    "name": "arrayOfObjects",
+                    "type": "Object[]",
+                    "description": "the input array of objects",
+                    "default": "",
+                    "optional": "",
+                    "nullable": ""
+                },
+                {
+                    "name": "the",
+                    "type": "string",
+                    "description": "property to pluck",
+                    "default": "",
+                    "optional": "",
+                    "nullable": ""
+                }
+            ],
+            "examples": [
+                "var data = [\n    {one: 1, two: 2},\n    {two: \"two\"},\n    {one: \"one\", two: \"zwei\"},\n];\n\nw.pluck(data, \"one\");\n// [ 1, \"one\" ]\n\nw.pluck(data, \"two\");\n// [ 2, \"two\", \"zwei\" ]\n\nw.pluck(data, \"one\", \"two\");\n// [ 1, \"two\", \"one\" ]"
+            ],
+            "returns": {
+                "type": "Array",
+                "description": ""
+            }
         },
         {
             "name": "arrayify",

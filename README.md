@@ -49,10 +49,34 @@ escape special regular expression characters
 
 ###Example
 ```js
-w.escapeRegExp("(.*)"); // => '\\(\\.\\*\\)'
+w.escapeRegExp("(.*)"); 
+// '\\(\\.\\*\\)'
 ```
 ##pluck
-return the first existing property
+Plucks the value of the specified property from each object in the input array
+
+###Parameters
+arrayOfObjects {Object[]} - the input array of objects
+the {string} - property to pluck
+
+###Example
+```js
+var data = [
+    {one: 1, two: 2},
+    {two: "two"},
+    {one: "one", two: "zwei"},
+];
+
+w.pluck(data, "one");
+// [ 1, "one" ]
+
+w.pluck(data, "two");
+// [ 2, "two", "zwei" ]
+
+w.pluck(data, "one", "two");
+// [ 1, "two", "one" ]
+```
+**Returns** Array 
 
 ##arrayify
 Either:
