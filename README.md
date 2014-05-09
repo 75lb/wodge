@@ -19,8 +19,11 @@ object {Object} - a sequence of Object instances to be extended
 
 ###Example
 ```js
-w.extend({}, { one: 1, three: 3 }, { one: "one", two: 2 }, { four: 4 });
-// { one: "one", two: 2, three: 3, four: 4 }
+> w.extend({}, { one: 1, three: 3 }, { one: "one", two: 2 }, { four: 4 });
+{ one: 'one',
+  three: 3,
+  two: 2,
+  four: 4 }
 ```
 ##clone
 Returns a copy of the input object
@@ -28,6 +31,17 @@ Returns a copy of the input object
 ###Parameters
 input {Object} - the object to clone  
 
+###Example
+```js
+> a = new Date()
+Fri May 09 2014 13:54:34 GMT+0200 (CEST)
+> w.clone(a)
+{}  // a Date instance doensn't own any properties
+> a.clive = "hater"
+'hater'
+> w.clone(a)
+{ clive: 'hater' }
+```
 **Returns** Object 
 
 ##omit
@@ -135,6 +149,11 @@ precision {number} - number of decimal places
 ##getHomeDir
 Cross-platform home directory retriever
 
+###Example
+```js
+> w.getHomeDir()
+'/Users/Lloyd'
+```
 ##exists
 ###Example
 ```js

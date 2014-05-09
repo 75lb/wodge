@@ -19,7 +19,7 @@
                 }
             ],
             "examples": [
-                "w.extend({}, { one: 1, three: 3 }, { one: \"one\", two: 2 }, { four: 4 });\n// { one: \"one\", two: 2, three: 3, four: 4 }"
+                "> w.extend({}, { one: 1, three: 3 }, { one: \"one\", two: 2 }, { four: 4 });\n{ one: 'one',\n  three: 3,\n  two: 2,\n  four: 4 }"
             ]
         },
         {
@@ -37,7 +37,9 @@
                     "nullable": ""
                 }
             ],
-            "examples": [],
+            "examples": [
+                "> a = new Date()\nFri May 09 2014 13:54:34 GMT+0200 (CEST)\n> w.clone(a)\n{}  // a Date instance doensn't own any properties\n> a.clive = \"hater\"\n'hater'\n> w.clone(a)\n{ clive: 'hater' }"
+            ],
             "returns": {
                 "type": "Object",
                 "description": ""
@@ -243,7 +245,9 @@
             "virtual": false,
             "description": "Cross-platform home directory retriever",
             "parameters": [],
-            "examples": []
+            "examples": [
+                "> w.getHomeDir()\n'/Users/Lloyd'"
+            ]
         },
         {
             "name": "exists",
