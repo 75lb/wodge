@@ -364,8 +364,8 @@ undefined
 Returns the initial elements which both input arrays have in common
 
 ###Parameters
-a {Array} -   
-b {Array} -   
+a {Array} - first array to compare  
+b {Array} - second array to compare  
 
 ###Example
 ```js
@@ -380,6 +380,11 @@ strips special characters, making suitable for storage in a JS/JSON string
 ###Parameters
 input {string} - the input  
 
+###Example
+```js
+> w.escapeForJSON("hello\nthere")
+'hello\\nthere'
+```
 **Returns** string 
 
 

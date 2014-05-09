@@ -494,7 +494,7 @@
                 {
                     "name": "a",
                     "type": "Array",
-                    "description": "",
+                    "description": "first array to compare",
                     "default": "",
                     "optional": "",
                     "nullable": ""
@@ -502,7 +502,7 @@
                 {
                     "name": "b",
                     "type": "Array",
-                    "description": "",
+                    "description": "second array to compare",
                     "default": "",
                     "optional": "",
                     "nullable": ""
@@ -531,7 +531,9 @@
                     "nullable": ""
                 }
             ],
-            "examples": [],
+            "examples": [
+                "> w.escapeForJSON(\"hello\\nthere\")\n'hello\\\\nthere'"
+            ],
             "returns": {
                 "type": "string",
                 "description": ""
