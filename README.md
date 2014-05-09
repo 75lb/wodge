@@ -256,14 +256,41 @@ padWith {string} - the padding character *optional* *default=" "*
 **Returns** string 
 
 ##exists
+returns true if a value, or nested object value exists in an array
+
+###Parameters
+array {Array} - the array to search  
+value {*} - the value to search for  
+
 ###Example
 ```js
-exists([ 1, 2, 3 ], 2)             // true
-exists([
-    { result: false, number: 1 },
-    { result: false, number: 2 }
-], { result: true })               // false
+> w.exists([ 1, 2, 3 ], 2)
+true
+> w.exists([ { result: false }, { result: false } ], { result: true })
+false
+> w.exists([ { result: true }, { result: false } ], { result: true })
+true
+> w.exists([ { result: true }, { result: true } ], { result: true })
+true
 ```
+**Returns** boolean 
+
+##without
+Returns the input array, minus the specied values
+
+###Parameters
+array {Array} - the input array  
+toRemove {*} - a single, or array of values to omit  
+
+###Example
+```js
+> w.without([ 1, 2, 3 ], 2)
+[ 1, 3 ]
+> w.without([ 1, 2, 3 ], [ 2, 3 ])
+[ 1 ]
+```
+**Returns** Array 
+
 ##first
 Works on an array of objects. Returns the first object with `property` set to `value`.
 

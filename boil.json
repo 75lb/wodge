@@ -346,11 +346,63 @@
             "name": "exists",
             "access": "",
             "virtual": false,
-            "description": "",
-            "parameters": [],
+            "description": "returns true if a value, or nested object value exists in an array",
+            "parameters": [
+                {
+                    "name": "array",
+                    "type": "Array",
+                    "description": "the array to search",
+                    "default": "",
+                    "optional": "",
+                    "nullable": ""
+                },
+                {
+                    "name": "value",
+                    "type": "*",
+                    "description": "the value to search for",
+                    "default": "",
+                    "optional": "",
+                    "nullable": ""
+                }
+            ],
             "examples": [
-                "exists([ 1, 2, 3 ], 2)             // true\nexists([\n    { result: false, number: 1 },\n    { result: false, number: 2 }\n], { result: true })               // false"
-            ]
+                "> w.exists([ 1, 2, 3 ], 2)\ntrue\n> w.exists([ { result: false }, { result: false } ], { result: true })\nfalse\n> w.exists([ { result: true }, { result: false } ], { result: true })\ntrue\n> w.exists([ { result: true }, { result: true } ], { result: true })\ntrue"
+            ],
+            "returns": {
+                "type": "boolean",
+                "description": ""
+            }
+        },
+        {
+            "name": "without",
+            "access": "",
+            "virtual": false,
+            "description": "Returns the input array, minus the specied values",
+            "parameters": [
+                {
+                    "name": "array",
+                    "type": "Array",
+                    "description": "the input array",
+                    "default": "",
+                    "optional": "",
+                    "nullable": ""
+                },
+                {
+                    "name": "toRemove",
+                    "type": "*",
+                    "description": "a single, or array of values to omit",
+                    "default": "",
+                    "optional": "",
+                    "nullable": ""
+                }
+            ],
+            "examples": [
+                "> w.without([ 1, 2, 3 ], 2)\n[ 1, 3 ]\n> w.without([ 1, 2, 3 ], [ 2, 3 ])\n[ 1 ]"
+            ],
+            "returns": {
+                "type": "Array",
+                "description": ""
+            }
         },
         {
             "name": "first",
