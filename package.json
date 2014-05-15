@@ -9,7 +9,8 @@
     "tape": "~2.12"
   },
   "scripts": {
-    "test": "tape test/*.js"
+    "test": "tape test/*.js",
+    "boil": "baldrick --do 'jsdoc2md lib/wodge.js -t README.hbs > README.md' --when lib/wodge.js README.hbs --change"
   },
   "testling": {
     "files": "test/*.js",
