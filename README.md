@@ -7,8 +7,6 @@
 
 #wodge
 A collection of useful functions.
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-#API Documentation
 A wodge of functionality i use on da regular.
 
 ###w.symbol
