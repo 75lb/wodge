@@ -1,5 +1,6 @@
 [![view on npm](http://img.shields.io/npm/v/wodge.svg)](https://www.npmjs.org/package/wodge)
 [![npm module downloads per month](http://img.shields.io/npm/dm/wodge.svg)](https://www.npmjs.org/package/wodge)
+[![Build Status](https://travis-ci.org/75lb/wodge.svg?branch=master)](https://travis-ci.org/75lb/wodge)
 [![Dependency Status](https://david-dm.org/75lb/wodge.svg)](https://david-dm.org/75lb/wodge)
 ![Analytics](https://ga-beacon.appspot.com/UA-27725889-25/wodge/README.md?pixel)
 
@@ -7,7 +8,6 @@
 
 #wodge
 A collection of useful functions.
-A wodge of functionality i use on da regular.
 
 ###w.symbol
 some cross platform symbols (`tick` and `cross`)
