@@ -65,11 +65,13 @@ Merge a list of objects, left to right, into one.
 
 
 ####Example
+```js
 > w.extend({}, { one: 1, three: 3 }, { one: "one", two: 2 }, { four: 4 });
 { one: 'one',
   three: 3,
   two: 2,
   four: 4 }
+```
 
 
 
@@ -85,6 +87,7 @@ Clones an object or array
 
 
 ####Example
+```js
 > date = new Date()
 Fri May 09 2014 13:54:34 GMT+0200 (CEST)
 > w.clone(date)
@@ -99,6 +102,7 @@ Fri May 09 2014 13:54:34 GMT+0200 (CEST)
 [ 1, 2, 3 ]
 > array === newArray
 false
+```
 
 
 
@@ -115,8 +119,10 @@ Returns a clone of the input object, minus the specified properties
 
 
 ####Example
+```js
 > w.omit({ one: 1, two: 2, three: 3, four: 4 }, [ "two", "four" ]);
 { one: 1, three: 3 }
+```
 
 
 
@@ -129,8 +135,10 @@ escape special regular expression characters
 
 
 ####Example
+```js
 > w.escapeRegExp("(.*)");
 '\\(\\.\\*\\)'
+```
 
 
 
@@ -147,18 +155,20 @@ Plucks the value of the specified property from each object in the input array
 
 
 ####Example
-> var data = [
-...     {one: 1, two: 2},
-...     {two: "two"},
-...     {one: "one", two: "zwei"},
-... ];
-undefined
-> w.pluck(data, "one");
-[ 1, 'one' ]
-> w.pluck(data, "two");
-[ 2, 'two', 'zwei' ]
-> w.pluck(data, "one", "two");
-[ 1, 'two', 'one' ]
+```js
+    > var data = [
+    ...     {one: 1, two: 2},
+    ...     {two: "two"},
+    ...     {one: "one", two: "zwei"},
+    ... ];
+    undefined
+    > w.pluck(data, "one");
+    [ 1, 'one' ]
+    > w.pluck(data, "two");
+    [ 2, 'two', 'zwei' ]
+    > w.pluck(data, "one", "two");
+    [ 1, 'two', 'one' ]
+```
 
 
 
