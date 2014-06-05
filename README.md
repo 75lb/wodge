@@ -18,6 +18,7 @@ var w = require("wodge");
 
 
 
+##API
 
 * wodge
   * [symbol](#module_wodge.symbol)
