@@ -6,13 +6,57 @@
 
 [![browser support](https://ci.testling.com/75lb/wodge.png)](https://ci.testling.com/75lb/wodge)
 
+#API Reference
+
+* wodge
+  * [symbol](#module_wodge.symbol)
+  * [extend(object)](#module_wodge~extend)
+  * [clone(input)](#module_wodge~clone)
+  * [omit(object, toOmit)](#module_wodge~omit)
+  * [escapeRegExp()](#module_wodge~escapeRegExp)
+  * [pluck(arrayOfObjects, the)](#module_wodge~pluck)
+  * [isNumber()](#module_wodge~isNumber)
+  * [isPlainObject(input)](#module_wodge~isPlainObject)
+  * [arrayify(input)](#module_wodge~arrayify)
+  * [every(object, iterator)](#module_wodge~every)
+  * [each(object, callback)](#module_wodge~each)
+  * [bytesToSize(bytes, [precision])](#module_wodge~bytesToSize)
+  * [getHomeDir()](#module_wodge~getHomeDir)
+  * [fill(fillWith, len)](#module_wodge~fill)
+  * [padRight(input, width, [padWith])](#module_wodge~padRight)
+  * [exists(array, value)](#module_wodge~exists)
+  * [queryFoundInObject()](#module_wodge~queryFoundInObject)
+  * [where()](#module_wodge~where)
+  * [findWhere()](#module_wodge~findWhere)
+  * [without(input, toRemove)](#module_wodge~without)
+  * [first(objectArray, prop, val)](#module_wodge~first)
+  * [commonDir(files)](#module_wodge~commonDir)
+  * [union()](#module_wodge~union)
+  * [commonSequence(a, b)](#module_wodge~commonSequence)
+  * [escapeForJSON(input)](#module_wodge~escapeForJSON)
+  
+
+
+
 #wodge
 A collection of useful functions.
 
-###w.symbol
+
+
+
+
+
+
+<a name="module_wodge.symbol"></a>
+###wodge.symbol
 some cross platform symbols (`tick` and `cross`)
 
-###w.extend(object)
+
+
+
+
+<a name="module_wodge~extend"></a>
+###wodge.extend(object)
 Merge a list of objects, left to right, into one.
 
 
@@ -21,26 +65,27 @@ Merge a list of objects, left to right, into one.
 
 
 
-####Examples
-```js
+####Example
 > w.extend({}, { one: 1, three: 3 }, { one: "one", two: 2 }, { four: 4 });
 { one: 'one',
   three: 3,
   two: 2,
   four: 4 }
-```
-###w.clone(input)
+
+
+
+<a name="module_wodge~clone"></a>
+###wodge.clone(input)
 Clones an object or array
 
 
 - input `Object | Array` the input to clone  
 
 
-**Returns**: Object,Array
+**Returns**: `Object | Array`
 
 
-####Examples
-```js
+####Example
 > date = new Date()
 Fri May 09 2014 13:54:34 GMT+0200 (CEST)
 > w.clone(date)
@@ -55,48 +100,54 @@ Fri May 09 2014 13:54:34 GMT+0200 (CEST)
 [ 1, 2, 3 ]
 > array === newArray
 false
-```
-###w.omit(object, toOmit)
+
+
+
+<a name="module_wodge~omit"></a>
+###wodge.omit(object, toOmit)
 Returns a clone of the input object, minus the specified properties
 
 
 - object `Object` the object to clone  
-- toOmit `Array.<string>` an array of property names to omit from the clone  
+- toOmit `string[]` an array of property names to omit from the clone  
 
 
-**Returns**: Object
+**Returns**: `Object`
 
 
-####Examples
-```js
+####Example
 > w.omit({ one: 1, two: 2, three: 3, four: 4 }, [ "two", "four" ]);
 { one: 1, three: 3 }
-```
-###w.escapeRegExp()
+
+
+
+<a name="module_wodge~escapeRegExp"></a>
+###wodge.escapeRegExp()
 escape special regular expression characters
 
 
 
 
 
-####Examples
-```js
+####Example
 > w.escapeRegExp("(.*)");
 '\\(\\.\\*\\)'
-```
-###w.pluck(arrayOfObjects, the)
+
+
+
+<a name="module_wodge~pluck"></a>
+###wodge.pluck(arrayOfObjects, the)
 Plucks the value of the specified property from each object in the input array
 
 
-- arrayOfObjects `Array.<Object>` the input array of objects  
+- arrayOfObjects `Object[]` the input array of objects  
 - the `string` property to pluck  
 
 
-**Returns**: Array
+**Returns**: `Array`
 
 
-####Examples
-```js
+####Example
 > var data = [
 ...     {one: 1, two: 2},
 ...     {two: "two"},
@@ -109,16 +160,18 @@ undefined
 [ 2, 'two', 'zwei' ]
 > w.pluck(data, "one", "two");
 [ 1, 'two', 'one' ]
-```
-###w.isNumber()
+
+
+
+<a name="module_wodge~isNumber"></a>
+###wodge.isNumber()
 Returns true if input is a number
 
 
 
 
 
-####Examples
-```js
+####Example
 > w.isNumber(0)
 true
 > w.isNumber(1)
@@ -137,27 +190,32 @@ false
 false
 > w.isNumber(Infinity)
 false
-```
-###w.isPlainObject(input)
+
+
+
+<a name="module_wodge~isPlainObject"></a>
+###wodge.isPlainObject(input)
 Returns true if input type is `object` and not an Array
 
 
 - input `*` the input to test  
 
 
-**Returns**: boolean
+**Returns**: `boolean`
 
 
-####Examples
-```js
+####Example
 > w.isPlainObject(new Date())
 true
 > w.isPlainObject({ clive: "hater" })
 true
 > w.isPlainObject([ 0, 1 ])
 false
-```
-###w.arrayify(input)
+
+
+
+<a name="module_wodge~arrayify"></a>
+###wodge.arrayify(input)
 Takes input and guarantees an array back. Result can be one of three things:
 
 - puts a single scalar in an array
@@ -168,11 +226,10 @@ Takes input and guarantees an array back. Result can be one of three things:
 - input `*` the input value to convert to an array  
 
 
-**Returns**: Array
+**Returns**: `Array`
 
 
-####Examples
-```js
+####Example
 > w.arrayify(null)
 []
 > w.arrayify(0)
@@ -183,8 +240,11 @@ Takes input and guarantees an array back. Result can be one of three things:
 undefined
 > f(1,2,3)
 [ 1, 2, 3 ]
-```
-###w.every(object, iterator)
+
+
+
+<a name="module_wodge~every"></a>
+###wodge.every(object, iterator)
 Returns true if the supplied iterator function returns true for every property in the object
 
 
@@ -192,19 +252,21 @@ Returns true if the supplied iterator function returns true for every property i
 - iterator `function` the iterator function to run against each key/value pair, the args are `(value, key)`.  
 
 
-**Returns**: Boolean
+**Returns**: `Boolean`
 
 
-####Examples
-```js
+####Example
 > function aboveTen(input){ return input > 10; }
 undefined
 > w.every({ eggs: 12, carrots: 30, peas: 100 }, aboveTen)
 true
 > w.every({ eggs: 6, carrots: 30, peas: 100 }, aboveTen)
 false
-```
-###w.each(object, callback)
+
+
+
+<a name="module_wodge~each"></a>
+###wodge.each(object, callback)
 Runs the iterator function against every key/value pair in the input object
 
 
@@ -214,8 +276,7 @@ Runs the iterator function against every key/value pair in the input object
 
 
 
-####Examples
-```js
+####Example
 > var total = 0;
 undefined
 > function addToTotal(n){ total += n; }
@@ -224,8 +285,11 @@ undefined
 undefined
 > total
 6
-```
-###w.bytesToSize(bytes, [precision])
+
+
+
+<a name="module_wodge~bytesToSize"></a>
+###wodge.bytesToSize(bytes, [precision])
 Convert bytes to human-readable size
 
 
@@ -233,11 +297,10 @@ Convert bytes to human-readable size
 - precision `number` number of decimal places  
 
 
-**Returns**: string
+**Returns**: `string`
 
 
-####Examples
-```js
+####Example
 > w.bytesToSize(10000)
 '10 KB'
 > w.bytesToSize(10000, 1)
@@ -246,20 +309,25 @@ Convert bytes to human-readable size
 '9.77 KB'
 > w.bytesToSize(10000, 3)
 '9.766 KB'
-```
-###w.getHomeDir()
+
+
+
+<a name="module_wodge~getHomeDir"></a>
+###wodge.getHomeDir()
 Cross-platform home directory retriever
 
 
 
 
 
-####Examples
-```js
+####Example
 > w.getHomeDir()
 '/Users/Lloyd'
-```
-###w.fill(fillWith, len)
+
+
+
+<a name="module_wodge~fill"></a>
+###wodge.fill(fillWith, len)
 Create a new string filled with the supplied character
 
 
@@ -267,17 +335,19 @@ Create a new string filled with the supplied character
 - len `number` the length of the output string  
 
 
-**Returns**: string
+**Returns**: `string`
 
 
-####Examples
-```js
+####Example
 > w.fill("a", 10)
 'aaaaaaaaaa'
 > w.fill("ab", 10)
 'aaaaaaaaaa'
-```
-###w.padRight(input, width, [padWith])
+
+
+
+<a name="module_wodge~padRight"></a>
+###wodge.padRight(input, width, [padWith])
 Add padding to the right of a string
 
 
@@ -286,19 +356,21 @@ Add padding to the right of a string
 - padWith `string` the padding character  
 
 
-**Returns**: string
+**Returns**: `string`
 
 
-####Examples
-```js
+####Example
 > w.padRight("clive", 1)
 'clive'
 > w.padRight("clive", 1, "-")
 'clive'
 > w.padRight("clive", 10, "-")
 'clive-----'
-```
-###w.exists(array, value)
+
+
+
+<a name="module_wodge~exists"></a>
+###wodge.exists(array, value)
 returns true if a value, or nested object value exists in an array
 
 
@@ -306,11 +378,10 @@ returns true if a value, or nested object value exists in an array
 - value `*` the value to search for  
 
 
-**Returns**: boolean
+**Returns**: `boolean`
 
 
-####Examples
-```js
+####Example
 > w.exists([ 1, 2, 3 ], 2)
 true
 > w.exists([ { result: false }, { result: false } ], { result: true })
@@ -319,56 +390,96 @@ false
 true
 > w.exists([ { result: true }, { result: true } ], { result: true })
 true
-```
-###w.without(array, toRemove)
-Returns the input array, minus the specied values
 
 
-- array `Array` the input array  
+
+<a name="module_wodge~queryFoundInObject"></a>
+###wodge.queryFoundInObject()
+docs todo
+
+
+
+
+
+
+
+
+<a name="module_wodge~where"></a>
+###wodge.where()
+docs todo
+
+
+
+
+
+
+
+
+<a name="module_wodge~findWhere"></a>
+###wodge.findWhere()
+docs todo
+
+
+
+
+
+
+
+
+<a name="module_wodge~without"></a>
+###wodge.without(input, toRemove)
+If the input is an array, returns the input minus the specified values.
+If the input is an object, it returns a clone of the object minus the specified properties.
+
+
+- input `Array | Object` the input array or object  
 - toRemove `*` a single, or array of values to omit  
 
 
-**Returns**: Array
+**Returns**: `Array | Object`
 
 
-####Examples
-```js
+####Example
 > w.without([ 1, 2, 3 ], 2)
 [ 1, 3 ]
 > w.without([ 1, 2, 3 ], [ 2, 3 ])
 [ 1 ]
-```
-###w.first(objectArray, prop, val)
+
+
+
+<a name="module_wodge~first"></a>
+###wodge.first(objectArray, prop, val)
 Returns the first object in the input array with `property` set to `value`.
 
 
-- objectArray `Array.<Object>` input array of objects  
+- objectArray `Object[]` input array of objects  
 - prop `string` property to inspect  
 - val `*` desired value  
 
 
-**Returns**: Object,undefined
+**Returns**: `Object | undefined`
 
 
-####Examples
-```js
+####Example
 > w.first([{ product: "egg", stock: true }, { product: "chicken", stock: true }], "stock", true)
 { product: 'egg', stock: true }
 > w.first([{ product: "egg", stock: true }, { product: "chicken", stock: true }], "stock", false)
 undefined
-```
-###w.commonDir(files)
+
+
+
+<a name="module_wodge~commonDir"></a>
+###wodge.commonDir(files)
 commonDir returns the directory common to each path in the list
 
 
 - files `Array` An array of file paths to inspect  
 
 
-**Returns**: string- A single path ending with the path separator, e.g. "/user/some/folder/"
+**Returns**: `string` - - A single path ending with the path separator, e.g. "/user/some/folder/"
 
 
-####Examples
-```js
+####Example
 > files = fs.readdirSync(".").map(function(file){ return path.resolve(file); })
 [ '/Users/Lloyd/Documents/75lb/wodge/.DS_Store',
   '/Users/Lloyd/Documents/75lb/wodge/.git',
@@ -381,16 +492,18 @@ commonDir returns the directory common to each path in the list
   '/Users/Lloyd/Documents/75lb/wodge/test' ]
 > w.commonDir(files)
 '/Users/Lloyd/Documents/75lb/wodge/'
-```
-###w.union()
+
+
+
+<a name="module_wodge~union"></a>
+###wodge.union()
 merge two arrays into a single array of unique values
 
 
 
 
 
-####Examples
-```js
+####Example
 > var array1 = [ 1, 2 ], array2 = [ 2, 3 ];
 undefined
 > w.union(array1, array2)
@@ -408,8 +521,11 @@ undefined
   { id: 3 } ]
 > w.union(array1, array2, "id")
 [ { id: 1 }, { id: 2 }, { id: 3 } ]
-```
-###w.commonSequence(a, b)
+
+
+
+<a name="module_wodge~commonSequence"></a>
+###wodge.commonSequence(a, b)
 Returns the initial elements which both input arrays have in common
 
 
@@ -417,28 +533,36 @@ Returns the initial elements which both input arrays have in common
 - b `Array` second array to compare  
 
 
-**Returns**: Array
+**Returns**: `Array`
 
 
-####Examples
-```js
+####Example
 > w.commonSequence([1,2,3], [1,2,4])
 [ 1, 2 ]
-```
-###w.escapeForJSON(input)
+
+
+
+<a name="module_wodge~escapeForJSON"></a>
+###wodge.escapeForJSON(input)
 strips special characters, making suitable for storage in a JS/JSON string
 
 
 - input `string` the input  
 
 
-**Returns**: string
+**Returns**: `string`
 
 
-####Examples
-```js
+####Example
 > w.escapeForJSON("hello\nthere")
 'hello\\nthere'
-```
+
+
+
+
+
+
+
+
 
 
