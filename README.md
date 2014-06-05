@@ -40,6 +40,8 @@
 #wodge
 A collection of useful functions.
 
+####Example
+
 
 
 
@@ -47,7 +49,10 @@ A collection of useful functions.
 
 
 <a name="module_wodge.symbol"></a>
-###wodge.symbol
+###w
+&#x60;&#x60;&#x60;js
+var w = require(&quot;wodge&quot;);
+&#x60;&#x60;&#x60;.symbol
 some cross platform symbols (`tick` and `cross`)
 
 
@@ -55,7 +60,10 @@ some cross platform symbols (`tick` and `cross`)
 
 
 <a name="module_wodge.extend"></a>
-###wodge.extend(object)
+###w
+&#x60;&#x60;&#x60;js
+var w = require(&quot;wodge&quot;);
+&#x60;&#x60;&#x60;.extend(object)
 Merge a list of objects, left to right, into one.
 
 
@@ -76,7 +84,10 @@ Merge a list of objects, left to right, into one.
 
 
 <a name="module_wodge.clone"></a>
-###wodge.clone(input)
+###w
+&#x60;&#x60;&#x60;js
+var w = require(&quot;wodge&quot;);
+&#x60;&#x60;&#x60;.clone(input)
 Clones an object or array
 
 
@@ -107,7 +118,10 @@ false
 
 
 <a name="module_wodge.omit"></a>
-###wodge.omit(object, toOmit)
+###w
+&#x60;&#x60;&#x60;js
+var w = require(&quot;wodge&quot;);
+&#x60;&#x60;&#x60;.omit(object, toOmit)
 Returns a clone of the input object, minus the specified properties
 
 
@@ -127,7 +141,10 @@ Returns a clone of the input object, minus the specified properties
 
 
 <a name="module_wodge.escapeRegExp"></a>
-###wodge.escapeRegExp()
+###w
+&#x60;&#x60;&#x60;js
+var w = require(&quot;wodge&quot;);
+&#x60;&#x60;&#x60;.escapeRegExp()
 escape special regular expression characters
 
 
@@ -143,7 +160,10 @@ escape special regular expression characters
 
 
 <a name="module_wodge.pluck"></a>
-###wodge.pluck(arrayOfObjects, the)
+###w
+&#x60;&#x60;&#x60;js
+var w = require(&quot;wodge&quot;);
+&#x60;&#x60;&#x60;.pluck(arrayOfObjects, the)
 Plucks the value of the specified property from each object in the input array
 
 
@@ -173,7 +193,10 @@ undefined
 
 
 <a name="module_wodge.isNumber"></a>
-###wodge.isNumber()
+###w
+&#x60;&#x60;&#x60;js
+var w = require(&quot;wodge&quot;);
+&#x60;&#x60;&#x60;.isNumber()
 Returns true if input is a number
 
 
@@ -205,7 +228,10 @@ false
 
 
 <a name="module_wodge.isPlainObject"></a>
-###wodge.isPlainObject(input)
+###w
+&#x60;&#x60;&#x60;js
+var w = require(&quot;wodge&quot;);
+&#x60;&#x60;&#x60;.isPlainObject(input)
 Returns true if input type is `object` and not an Array
 
 
@@ -228,7 +254,10 @@ false
 
 
 <a name="module_wodge.arrayify"></a>
-###wodge.arrayify(input)
+###w
+&#x60;&#x60;&#x60;js
+var w = require(&quot;wodge&quot;);
+&#x60;&#x60;&#x60;.arrayify(input)
 Takes input and guarantees an array back. Result can be one of three things:
 
 - puts a single scalar in an array
@@ -259,7 +288,10 @@ undefined
 
 
 <a name="module_wodge.every"></a>
-###wodge.every(object, iterator)
+###w
+&#x60;&#x60;&#x60;js
+var w = require(&quot;wodge&quot;);
+&#x60;&#x60;&#x60;.every(object, iterator)
 Returns true if the supplied iterator function returns true for every property in the object
 
 
@@ -283,7 +315,10 @@ false
 
 
 <a name="module_wodge.each"></a>
-###wodge.each(object, callback)
+###w
+&#x60;&#x60;&#x60;js
+var w = require(&quot;wodge&quot;);
+&#x60;&#x60;&#x60;.each(object, callback)
 Runs the iterator function against every key/value pair in the input object
 
 
@@ -308,12 +343,15 @@ undefined
 
 
 <a name="module_wodge.bytesToSize"></a>
-###wodge.bytesToSize(bytes, [precision])
+###w
+&#x60;&#x60;&#x60;js
+var w = require(&quot;wodge&quot;);
+&#x60;&#x60;&#x60;.bytesToSize(bytes, [precision])
 Convert bytes to human-readable size
 
 
 - bytes `number` the bytes value to convert  
-- precision `number` number of decimal places  
+- [precision] `number` number of decimal places  
 
 
 **Returns**: `string`
@@ -334,7 +372,10 @@ Convert bytes to human-readable size
 
 
 <a name="module_wodge.getHomeDir"></a>
-###wodge.getHomeDir()
+###w
+&#x60;&#x60;&#x60;js
+var w = require(&quot;wodge&quot;);
+&#x60;&#x60;&#x60;.getHomeDir()
 Cross-platform home directory retriever
 
 
@@ -350,7 +391,10 @@ Cross-platform home directory retriever
 
 
 <a name="module_wodge.fill"></a>
-###wodge.fill(fillWith, len)
+###w
+&#x60;&#x60;&#x60;js
+var w = require(&quot;wodge&quot;);
+&#x60;&#x60;&#x60;.fill(fillWith, len)
 Create a new string filled with the supplied character
 
 
@@ -372,13 +416,16 @@ Create a new string filled with the supplied character
 
 
 <a name="module_wodge.padRight"></a>
-###wodge.padRight(input, width, [padWith])
+###w
+&#x60;&#x60;&#x60;js
+var w = require(&quot;wodge&quot;);
+&#x60;&#x60;&#x60;.padRight(input, width, [padWith])
 Add padding to the right of a string
 
 
 - input `string` the string to pad  
 - width `number` the desired final width  
-- padWith `string` the padding character  
+- [padWith] `string` the padding character  
 
 
 **Returns**: `string`
@@ -397,7 +444,10 @@ Add padding to the right of a string
 
 
 <a name="module_wodge.exists"></a>
-###wodge.exists(array, value)
+###w
+&#x60;&#x60;&#x60;js
+var w = require(&quot;wodge&quot;);
+&#x60;&#x60;&#x60;.exists(array, value)
 returns true if a value, or nested object value exists in an array
 
 
@@ -423,7 +473,10 @@ true
 
 
 <a name="module_wodge.queryFoundInObject"></a>
-###wodge.queryFoundInObject()
+###w
+&#x60;&#x60;&#x60;js
+var w = require(&quot;wodge&quot;);
+&#x60;&#x60;&#x60;.queryFoundInObject()
 docs todo
 
 
@@ -434,7 +487,10 @@ docs todo
 
 
 <a name="module_wodge.where"></a>
-###wodge.where()
+###w
+&#x60;&#x60;&#x60;js
+var w = require(&quot;wodge&quot;);
+&#x60;&#x60;&#x60;.where()
 docs todo
 
 
@@ -445,7 +501,10 @@ docs todo
 
 
 <a name="module_wodge.findWhere"></a>
-###wodge.findWhere()
+###w
+&#x60;&#x60;&#x60;js
+var w = require(&quot;wodge&quot;);
+&#x60;&#x60;&#x60;.findWhere()
 docs todo
 
 
@@ -456,7 +515,10 @@ docs todo
 
 
 <a name="module_wodge.without"></a>
-###wodge.without(input, toRemove)
+###w
+&#x60;&#x60;&#x60;js
+var w = require(&quot;wodge&quot;);
+&#x60;&#x60;&#x60;.without(input, toRemove)
 If the input is an array, returns the input minus the specified values.
 If the input is an object, it returns a clone of the object minus the specified properties.
 
@@ -479,7 +541,10 @@ If the input is an object, it returns a clone of the object minus the specified 
 
 
 <a name="module_wodge.first"></a>
-###wodge.first(objectArray, prop, val)
+###w
+&#x60;&#x60;&#x60;js
+var w = require(&quot;wodge&quot;);
+&#x60;&#x60;&#x60;.first(objectArray, prop, val)
 Returns the first object in the input array with `property` set to `value`.
 
 
@@ -502,7 +567,10 @@ undefined
 
 
 <a name="module_wodge.commonDir"></a>
-###wodge.commonDir(files)
+###w
+&#x60;&#x60;&#x60;js
+var w = require(&quot;wodge&quot;);
+&#x60;&#x60;&#x60;.commonDir(files)
 commonDir returns the directory common to each path in the list
 
 
@@ -531,7 +599,10 @@ commonDir returns the directory common to each path in the list
 
 
 <a name="module_wodge.union"></a>
-###wodge.union()
+###w
+&#x60;&#x60;&#x60;js
+var w = require(&quot;wodge&quot;);
+&#x60;&#x60;&#x60;.union()
 merge two arrays into a single array of unique values
 
 
@@ -562,7 +633,10 @@ undefined
 
 
 <a name="module_wodge.commonSequence"></a>
-###wodge.commonSequence(a, b)
+###w
+&#x60;&#x60;&#x60;js
+var w = require(&quot;wodge&quot;);
+&#x60;&#x60;&#x60;.commonSequence(a, b)
 Returns the initial elements which both input arrays have in common
 
 
@@ -582,7 +656,10 @@ Returns the initial elements which both input arrays have in common
 
 
 <a name="module_wodge.escapeForJSON"></a>
-###wodge.escapeForJSON(input)
+###w
+&#x60;&#x60;&#x60;js
+var w = require(&quot;wodge&quot;);
+&#x60;&#x60;&#x60;.escapeForJSON(input)
 strips special characters, making suitable for storage in a JS/JSON string
 
 
