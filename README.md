@@ -17,37 +17,32 @@ var w = require("wodge");
 
 
 
-
-##API
-
-* wodge
-  * [symbol](#module_wodge.symbol)
-  * [extend(object)](#module_wodge.extend)
-  * [clone(input)](#module_wodge.clone)
-  * [omit(object, toOmit)](#module_wodge.omit)
-  * [escapeRegExp()](#module_wodge.escapeRegExp)
-  * [pluck(arrayOfObjects, the)](#module_wodge.pluck)
-  * [isNumber()](#module_wodge.isNumber)
-  * [isPlainObject(input)](#module_wodge.isPlainObject)
-  * [arrayify(input)](#module_wodge.arrayify)
-  * [every(object, iterator)](#module_wodge.every)
-  * [each(object, callback)](#module_wodge.each)
-  * [bytesToSize(bytes, [precision])](#module_wodge.bytesToSize)
-  * [getHomeDir()](#module_wodge.getHomeDir)
-  * [fill(fillWith, len)](#module_wodge.fill)
-  * [padRight(input, width, [padWith])](#module_wodge.padRight)
-  * [exists(array, value)](#module_wodge.exists)
-  * [queryFoundInObject()](#module_wodge.queryFoundInObject)
-  * [where()](#module_wodge.where)
-  * [findWhere()](#module_wodge.findWhere)
-  * [without(input, toRemove)](#module_wodge.without)
-  * [first(objectArray, prop, val)](#module_wodge.first)
-  * [commonDir(files)](#module_wodge.commonDir)
-  * [union()](#module_wodge.union)
-  * [commonSequence(a, b)](#module_wodge.commonSequence)
-  * [escapeForJSON(input)](#module_wodge.escapeForJSON)
-  
-
+**Contents**
+* [symbol](#module_wodge.symbol)
+* [extend(object)](#module_wodge.extend)
+* [clone(input)](#module_wodge.clone)
+* [omit(object, toOmit)](#module_wodge.omit)
+* [escapeRegExp()](#module_wodge.escapeRegExp)
+* [pluck(arrayOfObjects, the)](#module_wodge.pluck)
+* [isNumber()](#module_wodge.isNumber)
+* [isPlainObject(input)](#module_wodge.isPlainObject)
+* [arrayify(input)](#module_wodge.arrayify)
+* [every(object, iterator)](#module_wodge.every)
+* [each(object, callback)](#module_wodge.each)
+* [bytesToSize(bytes, [precision])](#module_wodge.bytesToSize)
+* [getHomeDir()](#module_wodge.getHomeDir)
+* [fill(fillWith, len)](#module_wodge.fill)
+* [padRight(input, width, [padWith])](#module_wodge.padRight)
+* [exists(array, value)](#module_wodge.exists)
+* [queryFoundInObject()](#module_wodge.queryFoundInObject)
+* [where()](#module_wodge.where)
+* [findWhere()](#module_wodge.findWhere)
+* [without(input, toRemove)](#module_wodge.without)
+* [first(objectArray, prop, val)](#module_wodge.first)
+* [commonDir(files)](#module_wodge.commonDir)
+* [union()](#module_wodge.union)
+* [commonSequence(a, b)](#module_wodge.commonSequence)
+* [escapeForJSON(input)](#module_wodge.escapeForJSON)
 
 
 

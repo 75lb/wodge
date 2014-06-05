@@ -10,7 +10,7 @@
   },
   "scripts": {
     "test": "tape test/*.js",
-    "docs": "jsdoc2md lib/wodge.js -t jsdoc2md/README.hbs > README.md",
+    "docs": "jsdoc2md lib/wodge.js -t jsdoc2md/README.hbs > README.md; echo",
     "watch": "baldrick --do 'jsdoc2md lib/wodge.js -t jsdoc2md/README.hbs > README.md' --when lib/*.js jsdoc2md/*.hbs --change"
   },
   "testling": {
