@@ -156,18 +156,18 @@ Plucks the value of the specified property from each object in the input array
 
 ####Example
 ```js
-    > var data = [
-    ...     {one: 1, two: 2},
-    ...     {two: "two"},
-    ...     {one: "one", two: "zwei"},
-    ... ];
-    undefined
-    > w.pluck(data, "one");
-    [ 1, 'one' ]
-    > w.pluck(data, "two");
-    [ 2, 'two', 'zwei' ]
-    > w.pluck(data, "one", "two");
-    [ 1, 'two', 'one' ]
+> var data = [
+...     {one: 1, two: 2},
+...     {two: "two"},
+...     {one: "one", two: "zwei"},
+... ];
+undefined
+> w.pluck(data, "one");
+[ 1, 'one' ]
+> w.pluck(data, "two");
+[ 2, 'two', 'zwei' ]
+> w.pluck(data, "one", "two");
+[ 1, 'two', 'one' ]
 ```
 
 
@@ -181,6 +181,7 @@ Returns true if input is a number
 
 
 ####Example
+```js
 > w.isNumber(0)
 true
 > w.isNumber(1)
@@ -199,6 +200,7 @@ false
 false
 > w.isNumber(Infinity)
 false
+```
 
 
 
@@ -214,12 +216,14 @@ Returns true if input type is `object` and not an Array
 
 
 ####Example
+```js
 > w.isPlainObject(new Date())
 true
 > w.isPlainObject({ clive: "hater" })
 true
 > w.isPlainObject([ 0, 1 ])
 false
+```
 
 
 
@@ -239,6 +243,7 @@ Takes input and guarantees an array back. Result can be one of three things:
 
 
 ####Example
+```js
 > w.arrayify(null)
 []
 > w.arrayify(0)
@@ -249,6 +254,7 @@ Takes input and guarantees an array back. Result can be one of three things:
 undefined
 > f(1,2,3)
 [ 1, 2, 3 ]
+```
 
 
 
@@ -265,12 +271,14 @@ Returns true if the supplied iterator function returns true for every property i
 
 
 ####Example
+```js
 > function aboveTen(input){ return input > 10; }
 undefined
 > w.every({ eggs: 12, carrots: 30, peas: 100 }, aboveTen)
 true
 > w.every({ eggs: 6, carrots: 30, peas: 100 }, aboveTen)
 false
+```
 
 
 
@@ -286,6 +294,7 @@ Runs the iterator function against every key/value pair in the input object
 
 
 ####Example
+```js
 > var total = 0;
 undefined
 > function addToTotal(n){ total += n; }
@@ -294,6 +303,7 @@ undefined
 undefined
 > total
 6
+```
 
 
 
@@ -310,6 +320,7 @@ Convert bytes to human-readable size
 
 
 ####Example
+```js
 > w.bytesToSize(10000)
 '10 KB'
 > w.bytesToSize(10000, 1)
@@ -318,6 +329,7 @@ Convert bytes to human-readable size
 '9.77 KB'
 > w.bytesToSize(10000, 3)
 '9.766 KB'
+```
 
 
 
@@ -330,8 +342,10 @@ Cross-platform home directory retriever
 
 
 ####Example
+```js
 > w.getHomeDir()
 '/Users/Lloyd'
+```
 
 
 
@@ -348,10 +362,12 @@ Create a new string filled with the supplied character
 
 
 ####Example
+```js
 > w.fill("a", 10)
 'aaaaaaaaaa'
 > w.fill("ab", 10)
 'aaaaaaaaaa'
+```
 
 
 
@@ -369,12 +385,14 @@ Add padding to the right of a string
 
 
 ####Example
+```js
 > w.padRight("clive", 1)
 'clive'
 > w.padRight("clive", 1, "-")
 'clive'
 > w.padRight("clive", 10, "-")
 'clive-----'
+```
 
 
 
@@ -391,6 +409,7 @@ returns true if a value, or nested object value exists in an array
 
 
 ####Example
+```js
 > w.exists([ 1, 2, 3 ], 2)
 true
 > w.exists([ { result: false }, { result: false } ], { result: true })
@@ -399,6 +418,7 @@ false
 true
 > w.exists([ { result: true }, { result: true } ], { result: true })
 true
+```
 
 
 
@@ -449,10 +469,12 @@ If the input is an object, it returns a clone of the object minus the specified 
 
 
 ####Example
+```js
 > w.without([ 1, 2, 3 ], 2)
 [ 1, 3 ]
 > w.without([ 1, 2, 3 ], [ 2, 3 ])
 [ 1 ]
+```
 
 
 
@@ -470,10 +492,12 @@ Returns the first object in the input array with `property` set to `value`.
 
 
 ####Example
+```js
 > w.first([{ product: "egg", stock: true }, { product: "chicken", stock: true }], "stock", true)
 { product: 'egg', stock: true }
 > w.first([{ product: "egg", stock: true }, { product: "chicken", stock: true }], "stock", false)
 undefined
+```
 
 
 
@@ -489,6 +513,7 @@ commonDir returns the directory common to each path in the list
 
 
 ####Example
+```js
 > files = fs.readdirSync(".").map(function(file){ return path.resolve(file); })
 [ '/Users/Lloyd/Documents/75lb/wodge/.DS_Store',
   '/Users/Lloyd/Documents/75lb/wodge/.git',
@@ -501,6 +526,7 @@ commonDir returns the directory common to each path in the list
   '/Users/Lloyd/Documents/75lb/wodge/test' ]
 > w.commonDir(files)
 '/Users/Lloyd/Documents/75lb/wodge/'
+```
 
 
 
@@ -513,6 +539,7 @@ merge two arrays into a single array of unique values
 
 
 ####Example
+```js
 > var array1 = [ 1, 2 ], array2 = [ 2, 3 ];
 undefined
 > w.union(array1, array2)
@@ -530,6 +557,7 @@ undefined
   { id: 3 } ]
 > w.union(array1, array2, "id")
 [ { id: 1 }, { id: 2 }, { id: 3 } ]
+```
 
 
 
@@ -546,8 +574,10 @@ Returns the initial elements which both input arrays have in common
 
 
 ####Example
+```js
 > w.commonSequence([1,2,3], [1,2,4])
 [ 1, 2 ]
+```
 
 
 
@@ -563,8 +593,10 @@ strips special characters, making suitable for storage in a JS/JSON string
 
 
 ####Example
+```js
 > w.escapeForJSON("hello\nthere")
 'hello\\nthere'
+```
 
 
 
