@@ -7,6 +7,18 @@
 [![browser support](https://ci.testling.com/75lb/wodge.png)](https://ci.testling.com/75lb/wodge)
 
 
+#wodge
+A collection of useful functions.
+
+####Example
+```js
+var w = require("wodge");
+```
+
+
+
+
+
 * wodge
   * [symbol](#module_wodge.symbol)
   * [extend(object)](#module_wodge.extend)
@@ -34,17 +46,6 @@
   * [commonSequence(a, b)](#module_wodge.commonSequence)
   * [escapeForJSON(input)](#module_wodge.escapeForJSON)
   
-
-
-
-#wodge
-A collection of useful functions.
-
-####Example
-```js
-var w = require("wodge");
-```
-
 
 
 
@@ -89,7 +90,6 @@ Clones an object or array
 
 **Returns**: `Object | Array`
 
-
 ####Example
 ```js
 > date = new Date()
@@ -120,7 +120,6 @@ Returns a clone of the input object, minus the specified properties
 
 
 **Returns**: `Object`
-
 
 ####Example
 ```js
@@ -156,7 +155,6 @@ Plucks the value of the specified property from each object in the input array
 
 
 **Returns**: `Array`
-
 
 ####Example
 ```js
@@ -218,7 +216,6 @@ Returns true if input type is `object` and not an Array
 
 **Returns**: `boolean`
 
-
 ####Example
 ```js
 > w.isPlainObject(new Date())
@@ -244,7 +241,6 @@ Takes input and guarantees an array back. Result can be one of three things:
 
 
 **Returns**: `Array`
-
 
 ####Example
 ```js
@@ -272,7 +268,6 @@ Returns true if the supplied iterator function returns true for every property i
 
 
 **Returns**: `Boolean`
-
 
 ####Example
 ```js
@@ -322,7 +317,6 @@ Convert bytes to human-readable size
 
 **Returns**: `string`
 
-
 ####Example
 ```js
 > w.bytesToSize(10000)
@@ -364,7 +358,6 @@ Create a new string filled with the supplied character
 
 **Returns**: `string`
 
-
 ####Example
 ```js
 > w.fill("a", 10)
@@ -386,7 +379,6 @@ Add padding to the right of a string
 
 
 **Returns**: `string`
-
 
 ####Example
 ```js
@@ -410,7 +402,6 @@ returns true if a value, or nested object value exists in an array
 
 
 **Returns**: `boolean`
-
 
 ####Example
 ```js
@@ -471,7 +462,6 @@ If the input is an object, it returns a clone of the object minus the specified 
 
 **Returns**: `Array | Object`
 
-
 ####Example
 ```js
 > w.without([ 1, 2, 3 ], 2)
@@ -494,7 +484,6 @@ Returns the first object in the input array with `property` set to `value`.
 
 **Returns**: `Object | undefined`
 
-
 ####Example
 ```js
 > w.first([{ product: "egg", stock: true }, { product: "chicken", stock: true }], "stock", true)
@@ -514,7 +503,6 @@ commonDir returns the directory common to each path in the list
 
 
 **Returns**: `string` - - A single path ending with the path separator, e.g. "/user/some/folder/"
-
 
 ####Example
 ```js
@@ -576,7 +564,6 @@ Returns the initial elements which both input arrays have in common
 
 **Returns**: `Array`
 
-
 ####Example
 ```js
 > w.commonSequence([1,2,3], [1,2,4])
@@ -594,7 +581,6 @@ strips special characters, making suitable for storage in a JS/JSON string
 
 
 **Returns**: `string`
-
 
 ####Example
 ```js
