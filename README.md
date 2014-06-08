@@ -6,6 +6,8 @@
 
 [![browser support](https://ci.testling.com/75lb/wodge.png)](https://ci.testling.com/75lb/wodge)
 
+**DEPRECATED. This project has decomposed into several separate modules: string-ting, array-ting, object-ting, typical, common-dir, home-path and byte-size.**
+
 
 #wodge
 A collection of useful functions.
